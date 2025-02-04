@@ -29,6 +29,12 @@ export function HttpLoaderFactory(httpHandler: HttpBackend): TranslateHttpLoader
 // dashboard
 import { IndexComponent } from './index';
 
+//cdk
+import { CdkStepperModule } from "@angular/cdk/stepper"
+
+import { NgSelectModule } from '@ng-select/ng-select';
+
+
 // Layouts
 import { AppLayout } from './layouts/app-layout';
 import { AuthLayout } from './layouts/auth-layout';
@@ -43,6 +49,8 @@ import { AtencionCiudadanoComponent } from './components/atencion-ciudadano/aten
     imports: [
         RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
         BrowserModule,
+        ReactiveFormsModule,
+        CdkStepperModule,
         BrowserAnimationsModule,
         CommonModule,
         FormsModule,
@@ -56,8 +64,22 @@ import { AtencionCiudadanoComponent } from './components/atencion-ciudadano/aten
         }),
         StoreModule.forRoot({ index: indexReducer }),
         SharedModule.forRoot(),
+        NgSelectModule
+
+
+
     ],
-    declarations: [AppComponent, HeaderComponent, FooterComponent, SidebarComponent, ThemeCustomizerComponent, IndexComponent, AppLayout, AuthLayout,AtencionCiudadanoComponent],
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        SidebarComponent,
+        ThemeCustomizerComponent,
+        IndexComponent,
+        AppLayout,
+        AuthLayout,
+        AtencionCiudadanoComponent,
+    ],
     providers: [Title],
     bootstrap: [AppComponent],
 })

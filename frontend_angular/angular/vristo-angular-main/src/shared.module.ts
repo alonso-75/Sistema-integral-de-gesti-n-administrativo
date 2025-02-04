@@ -70,7 +70,6 @@ import { ClipboardModule } from 'ngx-clipboard';
         FormsModule,
         ReactiveFormsModule,
         RouterModule,
-
         TranslateModule.forChild(),
         NgScrollbarModule,
         DataTableModule,

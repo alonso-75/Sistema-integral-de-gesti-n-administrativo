@@ -4,10 +4,352 @@
             <a href="javascript:;" class="text-primary hover:underline">Dashboard</a>
         </li>
         <li class="before:content-['/'] ltr:before:mr-2 rtl:before:ml-2">
-            <span>Sales</span>
+            <span>Atencion Ciudadano</span>
         </li>
     </ul>
+    <div class="mb-6 flex flex-wrap items-center justify-center gap-4 lg:justify-end">
+        <button type="button" class="btn btn-info gap-2">
+            <icon-send />
+            Ver Registros
+        </button>
+    </div>
     <div class="panel mt-5 h-[calc(100vh-190px)]">
-        
+        <div class="container">
+            <div class="text-2xl font-semibold uppercase">Registro de Visitas</div>
+
+            <section>
+                <form [formGroup]="form" (ngSubmit)="onSubmit()" class="max-w-md ml-5 mt-14 items-start">
+                    <div class="mb-8">
+                        <ng-container *ngFor="let step of steps; let i = index; let last = last">
+                            <div class="flex items-start mb-4">
+                                <div class="flex flex-col items-center mr-4">
+                                    <div
+                                        [ngClass]="{
+                                            'bg-blue-500 text-white': currentStep === i,
+                                            'bg-gray-300 text-gray-600': currentStep !== i,
+                                        }"
+                                        class="rounded-full h-8 w-8 flex items-center justify-center font-bold"
+                                    >
+                                        {{ i + 1 }}
+                                    </div>
+                                    @if (!last) {
+                                        <div class="w-0.5 h-full bg-gray-300 my-2"></div>
+                                    }
+                                </div>
+                                <div class="flex-1">
+                                    <div class="font-semibold mb-2" [ngClass]="{ 'text-blue-500': currentStep === i }">
+                                        {{ step.label }}
+                                    </div>
+                                    <div [ngClass]="{ hidden: currentStep !== i }">
+                                        @switch (i) {
+                                            @case (0) {
+                                                <div formGroupName="documento">
+                                                    <div class="mb-4">
+                                                        <label for="tipodocumento" class="block text-sm font-medium text-gray-700">Tipo de documento</label>
+                                                        <input
+                                                            id="tipodocumento"
+                                                            type="text"
+                                                            formControlName="tipodocumento"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('documento.tipodocumento', 'required') }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label for="numerodocumento" class="block text-sm font-medium text-gray-700">Numero de Documento</label>
+                                                        <input
+                                                            id="numerodocumento"
+                                                            type="text"
+                                                            formControlName="numerodocumento"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('documento.numerodocumento', 'required') }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            }
+                                            @case (1) {
+                                                <div formGroupName="informacionpersonal">
+                                                    <div class="mb-4">
+                                                        <label for="Primernombre" class="block text-sm font-medium text-gray-700">Primer Nombre</label>
+                                                        <input
+                                                            id="Primernombre"
+                                                            type="text"
+                                                            formControlName="Primernombre"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('informacionpersonal.Primernombre', 'requied') }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label for="Segundonombre" class="block text-sm font-medium text-gray-700">Segundo Nombre</label>
+                                                        <input
+                                                            id="Segundonombre"
+                                                            type="text"
+                                                            formControlName="Segundonombre"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label for="Primerapellido" class="block text-sm font-medium text-gray-700">Primer Apellido</label>
+                                                        <input
+                                                            id="Primerapellido"
+                                                            type="text"
+                                                            formControlName="Primerapellido"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('informacionpersonal.Primerapellido', 'requied') }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label for="Segundoapellido" class="block text-sm font-medium text-gray-700">Segundoapellido</label>
+                                                        <input
+                                                            id="Segundoapellido"
+                                                            type="text"
+                                                            formControlName="Segundoapellido"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('informacionpersonal.Segundoapellido', 'requied') }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label for="Genero" class="block text-sm font-medium text-gray-700">Genero</label>
+                                                        <input
+                                                            id="Genero"
+                                                            type="text"
+                                                            formControlName="Genero"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('informacionpersonal.Genero', 'required') }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label for="Fechadenacimiento" class="block text-sm font-medium text-gray-700">Fecha de Nacimiento</label>
+                                                        <input
+                                                            id="Fechadenacimiento"
+                                                            type="date"
+                                                            formControlName="Fechadenacimiento"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('personalInfo.Fechadenacimiento', 'required') }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label for="pertenenciaetnica" class="block text-sm font-medium text-gray-700"
+                                                            >Pertenencia Étnica</label
+                                                        >
+                                                        <input
+                                                            id="pertenenciaetnica"
+                                                            type="text"
+                                                            formControlName="pertenenciaetnica"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('informacionpersonal.pertenenciaetnica', 'required') }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label for="Tipodepoblacion" class="block text-sm font-medium text-gray-700">Tipo De Poblacion</label>
+                                                        <input
+                                                            id="Tipodepoblacion"
+                                                            type="text"
+                                                            formControlName="Tipodepoblacion"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('informacionpersonal.Tipodepoblacion', 'required') }}
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="mb-4">
+                                                        <label for="Correoelectronico" class="block text-sm font-medium text-gray-700"
+                                                            >Correo Electronico</label
+                                                        >
+                                                        <input
+                                                            id="Correoelectronico"
+                                                            type="text"
+                                                            formControlName="Correoelectronico"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('informacionpersonal.Correoelectronico', 'email') }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label for="Telefonosdecontacto" class="block text-sm font-medium text-gray-700"
+                                                            >Telefono De Contacto</label
+                                                        >
+                                                        <input
+                                                            id="Telefonosdecontacto"
+                                                            type="text"
+                                                            formControlName="Telefonosdecontacto"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('informacionpersonal.Telefonosdecontacto', 'required') }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label for="Direccion" class="block text-sm font-medium text-gray-700">Dirección</label>
+                                                        <input
+                                                            id="Direccion"
+                                                            type="text"
+                                                            formControlName="Direccion"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('informacionpersonal.Direccion', 'required') }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            }
+                                            @case (2) {
+                                                <div formGroupName="motivovisita">
+                                                    <div class="mb-4">
+                                                        <label for="Tipodeatencion" class="block text-sm font-medium text-gray-700">Tipo de atanecion</label>
+                                                        <input
+                                                            id="Tipodeatencion"
+                                                            type="text"
+                                                            formControlName="Tipodeatencion"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('motivovisita.Tipodeatencion', 'required') }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label for="Fechadelaatencion" class="block text-sm font-medium text-gray-700">Fecha de atencion</label>
+                                                        <input
+                                                            id="Fechadelaatencion"
+                                                            type="date"
+                                                            formControlName="Fechadelaatencion"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('motivovisita.Fechadelaatencion', 'required') }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label for="Asunto" class="block text-sm font-medium text-gray-700">Asunto</label>
+                                                        <input
+                                                            id="Asunto"
+                                                            type="text"
+                                                            formControlName="Asunto"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('motivovisita.Asunto', 'required') }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label for="Descripcion" class="block text-sm font-medium text-gray-700">Descripcion</label>
+                                                        <input
+                                                            id="Descripcion"
+                                                            type="text"
+                                                            formControlName="Descripcion"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('motivovisita.Descripcion', 'required') }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label for="Atendidopor" class="block text-sm font-medium text-gray-700">Atendito por</label>
+                                                        <input
+                                                            id="Atendidopor"
+                                                            type="text"
+                                                            formControlName="Atendidopor"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('motivovisita.Atendidopor', 'required') }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label for="DependenciaoSecretaríaqueatiende" class="block text-sm font-medium text-gray-700">Dependencia o Secretaría que atiende</label>
+                                                        <input
+                                                            id="DependenciaoSecretaríaqueatiende"
+                                                            type="text"
+                                                            formControlName="DependenciaoSecretaríaqueatiende"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('motivovisita.DependenciaoSecretaríaqueatiende', 'required') }}
+                                                        </p>
+                                                    </div>
+                                                    <div class="mb-4">
+                                                        <label for="Oficinaoprogramaqueatiende" class="block text-sm font-medium text-gray-700">Oficina o programa que atiende</label>
+                                                        <input
+                                                            id="Oficinaoprogramaqueatiende"
+                                                            type="text"
+                                                            formControlName="Oficinaoprogramaqueatiende"
+                                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                                        />
+                                                        <p class="text-red-500 text-xs italic">
+                                                            {{ getFormErrorMessage('motivovisita.Oficinaoprogramaqueatiende', 'required') }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                            @case (3) {
+                                                <div formGroupName="confirmation">
+                                                    <div class="mb-4">
+                                                        <label class="inline-flex items-center">
+                                                            <input
+                                                                type="checkbox"
+                                                                formControlName="termsAccepted"
+                                                                class="form-checkbox h-5 w-5 text-blue-600"
+                                                            />
+                                                            <span class="ml-2 text-gray-700">Acepto los términos y condiciones</span>
+                                                        </label>
+                                                        <p
+                                                            class="text-red-500 text-xs italic"
+                                                            *ngIf="
+                                                                form.get('confirmation.termsAccepted').hasError('required') &&
+                                                                form.get('confirmation.termsAccepted').touched
+                                                            "
+                                                        >
+                                                            Debes aceptar los términos y condiciones para continuar.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                        @if (i > 0) {
+                                            <button
+                                                type="button"
+                                                (click)="onPrevious()"
+                                                class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2"
+                                            >
+                                                Anterior
+                                            </button>
+                                        }
+                                        @if (i < steps.length - 1) {
+                                            <button
+                                                type="button"
+                                                (click)="onNext()"
+                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                                                [disabled]="!isStepValid(i)"
+                                            >
+                                                Siguiente
+                                            </button>
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </form>
+            </section>
+        </div>
     </div>
 </div>
