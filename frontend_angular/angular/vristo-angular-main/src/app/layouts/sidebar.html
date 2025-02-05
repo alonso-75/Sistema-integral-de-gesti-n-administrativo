@@ -4,7 +4,7 @@
             <div class="flex items-center justify-between px-4 py-3">
                 <a routerLink="/" class="main-logo flex shrink-0 items-center">
                     <img class="ml-[5px] w-8 flex-none" src="/assets/images/logo.svg" alt="" />
-                    <span class="align-middle text-2xl font-semibold dark:text-white-light lg:inline ltr:ml-1.5 rtl:mr-1.5">VRISTO</span>
+                    <span class="align-middle text-lg font-semibold dark:text-white-light lg:inline ltr:ml-1.5 rtl:mr-1.5">Sistema administrativo </span>
                 </a>
                 <a
                     href="javascript:;"
@@ -56,7 +56,7 @@
 
                     <h2 class="-mx-4 mb-1 flex items-center bg-white-light/30 px-7 py-3 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
                         <icon-minus class="hidden h-5 w-4 flex-none" />
-                        <span>{{ ('apps' | translate) || '&nbsp;' }}</span>
+                        <span>{{ ('Atencion Al ciudadano' | translate) || '&nbsp;' }}</span>
                     </h2>
 
                     <li class="nav-item">
@@ -181,6 +181,18 @@
                                     </div>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a routerLink="/Atencion-Ciudadano/Formulario-Ingreso" class="group" routerLinkActive="active" (click)="toggleMobileMenu()">
+                                    <div class="flex items-center">
+                                        <icon-menu-notes class="shrink-0 group-hover:!text-primary" />
+                                        <span class="text-black dark:text-[#506690] dark:group-hover:text-white-dark ltr:pl-3 rtl:pr-3"
+                                            >{{ 'Formulario' | translate }}</span
+                                        >
+                                    </div>
+                                </a>
+                            </li>
+
+                    
                         </ul>
                     </li>
 

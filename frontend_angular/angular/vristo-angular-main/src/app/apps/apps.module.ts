@@ -16,6 +16,7 @@ import { CalendarComponent } from './calendar';
 import { ChatComponent } from './chat';
 import { MailboxComponent } from './mailbox';
 import { InvoiceListComponent } from './invoice/list';
+import { FormularioComponent } from './AtencionCiudadano/formulario';
 
 const routes: Routes = [
     { path: 'apps/chat', component: ChatComponent, data: { title: 'Chat' } },
@@ -29,6 +30,8 @@ const routes: Routes = [
     { path: 'apps/invoice/add', component: InvoiceAddComponent, data: { title: 'Invoice Add' } },
     { path: 'apps/invoice/edit', component: InvoiceEditComponent, data: { title: 'Invoice Edit' } },
     { path: 'apps/calendar', component: CalendarComponent, data: { title: 'Calendar' } },
+    { path: 'Atencion-Ciudadano/Formulario-Ingreso', component: FormularioComponent, data: { title: 'Atencion Formulario' } },
+
 ];
 
 @NgModule({
@@ -45,6 +48,7 @@ const routes: Routes = [
         InvoiceEditComponent,
         CalendarComponent,
         MailboxComponent,
+        FormularioComponent,
     ],
 })
 export class AppsModule {}
