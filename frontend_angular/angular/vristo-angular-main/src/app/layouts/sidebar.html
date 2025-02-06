@@ -3,7 +3,6 @@
         <div class="h-full bg-white dark:bg-[#0e1726]">
             <div class="flex items-center justify-between px-4 py-3">
                 <a routerLink="/" class="main-logo flex shrink-0 items-center">
-                    <img class="ml-[5px] w-8 flex-none" src="/assets/images/logo.svg" alt="" />
                     <span class="align-middle text-lg font-semibold dark:text-white-light lg:inline ltr:ml-1.5 rtl:mr-1.5">Sistema administrativo </span>
                 </a>
                 <a
@@ -191,8 +190,16 @@
                                     </div>
                                 </a>
                             </li>
-
-                    
+                            <li class="nav-item">
+                                <a routerLink="/Atencion-Ciudadano/Consultar-Ingreso" class="group" routerLinkActive="active" (click)="toggleMobileMenu()">
+                                    <div class="flex items-center">
+                                        <icon-menu-notes class="shrink-0 group-hover:!text-primary" />
+                                        <span class="text-black dark:text-[#506690] dark:group-hover:text-white-dark ltr:pl-3 rtl:pr-3"
+                                            >{{ 'Consultar Ingreso ' | translate }}</span
+                                        >
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 

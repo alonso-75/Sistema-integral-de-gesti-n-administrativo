@@ -17,6 +17,7 @@ import { ChatComponent } from './chat';
 import { MailboxComponent } from './mailbox';
 import { InvoiceListComponent } from './invoice/list';
 import { FormularioComponent } from './AtencionCiudadano/formulario';
+import { atencionDatatableComponent } from './AtencionCiudadano/atencion-table';
 
 const routes: Routes = [
     { path: 'apps/chat', component: ChatComponent, data: { title: 'Chat' } },
@@ -31,6 +32,8 @@ const routes: Routes = [
     { path: 'apps/invoice/edit', component: InvoiceEditComponent, data: { title: 'Invoice Edit' } },
     { path: 'apps/calendar', component: CalendarComponent, data: { title: 'Calendar' } },
     { path: 'Atencion-Ciudadano/Formulario-Ingreso', component: FormularioComponent, data: { title: 'Atencion Formulario' } },
+    { path: 'Atencion-Ciudadano/Consultar-Ingreso', component: atencionDatatableComponent, data: { title: 'Consultar Ingreso' } },
+
 
 ];
 
@@ -49,6 +52,7 @@ const routes: Routes = [
         CalendarComponent,
         MailboxComponent,
         FormularioComponent,
+        atencionDatatableComponent
     ],
 })
 export class AppsModule {}
