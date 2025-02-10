@@ -18,6 +18,8 @@ import { MailboxComponent } from './mailbox';
 import { InvoiceListComponent } from './invoice/list';
 import { FormularioComponent } from './AtencionCiudadano/formulario';
 import { atencionDatatableComponent } from './AtencionCiudadano/atencion-table';
+import { AgendarEquiposComponent } from './PrestamosEquipos/agendarequipos';
+import { GestionarInsumosComponent } from './PrestamosEquipos/gestionarinsumos-tables';
 
 const routes: Routes = [
     { path: 'apps/chat', component: ChatComponent, data: { title: 'Chat' } },
@@ -33,6 +35,9 @@ const routes: Routes = [
     { path: 'apps/calendar', component: CalendarComponent, data: { title: 'Calendar' } },
     { path: 'Atencion-Ciudadano/Formulario-Ingreso', component: FormularioComponent, data: { title: 'Atencion Formulario' } },
     { path: 'Atencion-Ciudadano/Consultar-Ingreso', component: atencionDatatableComponent, data: { title: 'Consultar Ingreso' } },
+    { path: 'Prestamos/Agendar', component: AgendarEquiposComponent, data: { title: 'Agendar Insumos' } },
+    { path: 'Prestamos/Gestionar', component: GestionarInsumosComponent, data: { title: 'Gestionar Insumos' } },
+
 
 
 ];
@@ -52,7 +57,9 @@ const routes: Routes = [
         CalendarComponent,
         MailboxComponent,
         FormularioComponent,
-        atencionDatatableComponent
+        atencionDatatableComponent,
+        AgendarEquiposComponent,
+        GestionarInsumosComponent
     ],
 })
 export class AppsModule {}
