@@ -1,0 +1,270 @@
+<div>
+    <div class="space-y-8 pt-5">
+        <div >
+            <!-- Tooltips -->
+            <div class="panel">
+                <div class="mb-5 flex items-center justify-between">
+                    <h5 class="text-lg font-semibold dark:text-white-light">Formulario de Incidencias</h5>
+                </div>
+                <div class="mb-5">
+                    <form class="space-y-5" [formGroup]="form6" (ngSubmit)="submitForm6()" novalidate>
+                        <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+                            <div [ngClass]="isSubmitForm6 ? form6.controls['firstName'].errors ? 'has-error' : 'has-success' : ''">
+                                <label for="tlpFname">First Name</label>
+                                <input id="tlpFname" type="text" placeholder="Enter First Name" class="form-input mb-2" formControlName="firstName" />
+                                <ng-container *ngIf="isSubmitForm6 && !form6.controls['firstName'].errors">
+                                    <span class="rounded bg-[#1abc9c] px-2 py-1 text-white">Looks Good!</span>
+                                </ng-container>
+                                <ng-container *ngIf="isSubmitForm6 && form6.controls['firstName'].errors">
+                                    <span class="rounded bg-danger px-2 py-1 text-white">Please fill the first Name</span>
+                                </ng-container>
+                            </div>
+                            <div [ngClass]="isSubmitForm6 ? form6.controls['lastName'].errors ? 'has-error' : 'has-success' : ''">
+                                <label for="tlpLname">Last name</label>
+                                <input id="tlpLname" type="text" placeholder="Enter Last Name" class="form-input mb-2" formControlName="lastName" />
+                                <ng-container *ngIf="isSubmitForm6 && !form6.controls['lastName'].errors">
+                                    <span class="rounded bg-[#1abc9c] px-2 py-1 text-white">Looks Good!</span>
+                                </ng-container>
+                                <ng-container *ngIf="isSubmitForm6 && form6.controls['lastName'].errors">
+                                    <span class="rounded bg-danger px-2 py-1 text-white">Please fill the last Name</span>
+                                </ng-container>
+                            </div>
+                            <div [ngClass]="isSubmitForm6 ? form6.controls['userName'].errors ? 'has-error' : 'has-success' : ''">
+                                <label for="tlpEmail">Username</label>
+                                <div class="flex">
+                                    <div
+                                        class="flex items-center justify-center border border-[#e0e6ed] bg-[#eee] px-3 font-semibold dark:border-[#17263c] dark:bg-[#1b2e4b] ltr:rounded-l-md ltr:border-r-0 rtl:rounded-r-md rtl:border-l-0"
+                                    >
+                                        {{"@"}}
+                                    </div>
+                                    <input
+                                        id="tlpEmail"
+                                        type="text"
+                                        placeholder="Enter Username"
+                                        class="form-input ltr:rounded-l-none rtl:rounded-r-none"
+                                        formControlName="userName"
+                                    />
+                                </div>
+                                <div class="mt-2">
+                                    <ng-container *ngIf="isSubmitForm6 && !form6.controls['userName'].errors">
+                                        <span class="rounded bg-[#1abc9c] px-2 py-1 text-white">Looks Good!</span>
+                                    </ng-container>
+                                    <ng-container *ngIf="isSubmitForm6 && form6.controls['userName'].errors">
+                                        <span class="rounded bg-danger px-2 py-1 text-white">Please choose a userName.</span>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 gap-5 md:grid-cols-4">
+                            <div class="md:col-span-2" [ngClass]="isSubmitForm6 ? form6.controls['city'].errors ? 'has-error' : 'has-success' : ''">
+                                <label for="tlpCity">City</label>
+                                <input id="tlpCity" type="text" placeholder="Enter City" class="form-input mb-2" formControlName="city" />
+                                <ng-container *ngIf="isSubmitForm6 && !form6.controls['city'].errors">
+                                    <span class="rounded bg-[#1abc9c] px-2 py-1 text-white">Looks Good!</span>
+                                </ng-container>
+                                <ng-container *ngIf="isSubmitForm6 && form6.controls['city'].errors">
+                                    <span class="rounded bg-danger px-2 py-1 text-white">Please provide a valid city.</span>
+                                </ng-container>
+                            </div>
+                            <div [ngClass]="isSubmitForm6 ? form6.controls['state'].errors ? 'has-error' : 'has-success' : ''">
+                                <label for="tlpState">State</label>
+                                <input id="tlpState" type="text" placeholder="Enter State" class="form-input mb-2" formControlName="state" />
+                                <ng-container *ngIf="isSubmitForm6 && !form6.controls['state'].errors">
+                                    <span class="rounded bg-[#1abc9c] px-2 py-1 text-white">Looks Good!</span>
+                                </ng-container>
+                                <ng-container *ngIf="isSubmitForm6 && form6.controls['state'].errors">
+                                    <span class="rounded bg-danger px-2 py-1 text-white">Please provide a valid state.</span>
+                                </ng-container>
+                            </div>
+                            <div [ngClass]="isSubmitForm6 ? form6.controls['zip'].errors ? 'has-error' : 'has-success' : ''">
+                                <label for="tlpZip">Zip</label>
+                                <input id="tlpZip" type="text" placeholder="Enter Zip" class="form-input mb-2" formControlName="zip" />
+                                <ng-container *ngIf="isSubmitForm6 && !form6.controls['zip'].errors">
+                                    <span class="rounded bg-[#1abc9c] px-2 py-1 text-white">Looks Good!</span>
+                                </ng-container>
+                                <ng-container *ngIf="isSubmitForm6 && form6.controls['zip'].errors">
+                                    <span class="rounded bg-danger px-2 py-1 text-white">Please provide a valid Zip.</span>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <div [ngClass]="isSubmitForm6 ? form6.controls['isTerms'].errors ? 'has-error' : 'has-success' : ''">
+                            <label class="flex cursor-pointer items-center">
+                                <input type="checkbox" class="form-checkbox" formControlName="isTerms" />
+                                <span class="text-white-dark">Agree to terms and conditions</span>
+                            </label>
+                            <ng-container *ngIf="isSubmitForm6 && form6.controls['isTerms'].errors">
+                                <div class="mt-2">
+                                    <span class="rounded bg-danger px-2 py-1 text-white">You must agree before submitting.</span>
+                                </div>
+                            </ng-container>
+                        </div>
+
+                        <!-- file upload -->
+                        <div class="">
+                            <div class="mb-5 flex items-center justify-between">
+                                <h5 class="text-lg font-semibold dark:text-white-light">Foto del incidente</h5>
+                            </div>
+                            <div class="mb-5">
+                                <div class="custom-file-container" data-upload-id="myFirstImage"></div>
+                            </div>
+                            <ng-container *ngIf="codeArr.includes('code1')">
+                                <pre> <code [languages]="['xml','typescript']" highlightAuto="&lt;!-- single file --&gt;
+            &lt;div class=&quot;custom-file-container&quot; data-upload-id=&quot;myFirstImage&quot;&gt;&lt;/div&gt;
+            
+            &lt;!-- script --&gt;
+            ngOnInit() {
+                // single image upload
+                new FileUploadWithPreview('myFirstImage', {
+                    images: {
+                        baseImage: '/assets/images/file-preview.svg',
+                        backgroundImage: '',
+                    },
+                });
+            }"></code> </pre>
+                            </ng-container>
+                        </div>
+                        <!-- file upload end -->
+
+                        <button type="submit" class="btn btn-primary !mt-6">Submit Form</button>
+                    </form>
+                </div>
+                <ng-container *ngIf="codeArr.includes('code6')">
+                    <pre> <code [languages]="['xml','typescript']" highlightAuto="&lt;form class=&quot;space-y-5&quot; [formGroup]=&quot;form6&quot; (ngSubmit)=&quot;submitForm6()&quot; novalidate&gt;
+    &lt;div class=&quot;grid grid-cols-1 gap-5 md:grid-cols-3&quot;&gt;
+        &lt;div [ngClass]=&quot;isSubmitForm6 ? form6.controls['firstName'].errors ? 'has-error' : 'has-success' : ''&quot;&gt;
+            &lt;label for=&quot;tlpFname&quot;&gt;First Name&lt;/label&gt;
+            &lt;input id=&quot;tlpFname&quot; type=&quot;text&quot; placeholder=&quot;Enter First Name&quot; class=&quot;form-input mb-2&quot; formControlName=&quot;firstName&quot; /&gt;
+            &lt;ng-container *ngIf=&quot;isSubmitForm6 &amp;&amp; !form6.controls['firstName'].errors&quot;&gt;
+                &lt;span class=&quot;rounded bg-[#1abc9c] py-1 px-2 text-white&quot;&gt;Looks Good!&lt;/span&gt;
+            &lt;/ng-container&gt;
+            &lt;ng-container *ngIf=&quot;isSubmitForm6 &amp;&amp; form6.controls['firstName'].errors&quot;&gt;
+                &lt;span class=&quot;rounded bg-danger py-1 px-2 text-white&quot;&gt;Please fill the first Name&lt;/span&gt;
+            &lt;/ng-container&gt;
+        &lt;/div&gt;
+        &lt;div [ngClass]=&quot;isSubmitForm6 ? form6.controls['lastName'].errors ? 'has-error' : 'has-success' : ''&quot;&gt;
+            &lt;label for=&quot;tlpLname&quot;&gt;Last name&lt;/label&gt;
+            &lt;input id=&quot;tlpLname&quot; type=&quot;text&quot; placeholder=&quot;Enter Last Name&quot; class=&quot;form-input mb-2&quot; formControlName=&quot;lastName&quot; /&gt;
+            &lt;ng-container *ngIf=&quot;isSubmitForm6 &amp;&amp; !form6.controls['lastName'].errors&quot;&gt;
+                &lt;span class=&quot;rounded bg-[#1abc9c] py-1 px-2 text-white&quot;&gt;Looks Good!&lt;/span&gt;
+            &lt;/ng-container&gt;
+            &lt;ng-container *ngIf=&quot;isSubmitForm6 &amp;&amp; form6.controls['lastName'].errors&quot;&gt;
+                &lt;span class=&quot;rounded bg-danger py-1 px-2 text-white&quot;&gt;Please fill the last Name&lt;/span&gt;
+            &lt;/ng-container&gt;
+        &lt;/div&gt;
+        &lt;div [ngClass]=&quot;isSubmitForm6 ? form6.controls['userName'].errors ? 'has-error' : 'has-success' : ''&quot;&gt;
+            &lt;label for=&quot;tlpEmail&quot;&gt;Username&lt;/label&gt;
+            &lt;div class=&quot;flex&quot;&gt;
+                &lt;div
+                    class=&quot;flex items-center justify-center border border-[#e0e6ed] bg-[#eee] px-3 font-semibold ltr:rounded-l-md ltr:border-r-0 rtl:rounded-r-md rtl:border-l-0 dark:border-[#17263c] dark:bg-[#1b2e4b]&quot;
+                &gt;
+                    @
+                &lt;/div&gt;
+                &lt;input
+                    id=&quot;tlpEmail&quot;
+                    type=&quot;text&quot;
+                    placeholder=&quot;Enter Username&quot;
+                    class=&quot;form-input ltr:rounded-l-none rtl:rounded-r-none&quot;
+                    formControlName=&quot;userName&quot;
+                /&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;mt-2&quot;&gt;
+                &lt;ng-container *ngIf=&quot;isSubmitForm6 &amp;&amp; !form6.controls['userName'].errors&quot;&gt;
+                    &lt;span class=&quot;rounded bg-[#1abc9c] py-1 px-2 text-white&quot;&gt;Looks Good!&lt;/span&gt;
+                &lt;/ng-container&gt;
+                &lt;ng-container *ngIf=&quot;isSubmitForm6 &amp;&amp; form6.controls['userName'].errors&quot;&gt;
+                    &lt;span class=&quot;rounded bg-danger py-1 px-2 text-white&quot;&gt;Please choose a userName.&lt;/span&gt;
+                &lt;/ng-container&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;grid grid-cols-1 gap-5 md:grid-cols-4&quot;&gt;
+        &lt;div class=&quot;md:col-span-2&quot; [ngClass]=&quot;isSubmitForm6 ? form6.controls['city'].errors ? 'has-error' : 'has-success' : ''&quot;&gt;
+            &lt;label for=&quot;tlpCity&quot;&gt;City&lt;/label&gt;
+            &lt;input id=&quot;tlpCity&quot; type=&quot;text&quot; placeholder=&quot;Enter City&quot; class=&quot;form-input mb-2&quot; formControlName=&quot;city&quot; /&gt;
+            &lt;ng-container *ngIf=&quot;isSubmitForm6 &amp;&amp; !form6.controls['city'].errors&quot;&gt;
+                &lt;span class=&quot;rounded bg-[#1abc9c] py-1 px-2 text-white&quot;&gt;Looks Good!&lt;/span&gt;
+            &lt;/ng-container&gt;
+            &lt;ng-container *ngIf=&quot;isSubmitForm6 &amp;&amp; form6.controls['city'].errors&quot;&gt;
+                &lt;span class=&quot;rounded bg-danger py-1 px-2 text-white&quot;&gt;Please provide a valid city.&lt;/span&gt;
+            &lt;/ng-container&gt;
+        &lt;/div&gt;
+        &lt;div [ngClass]=&quot;isSubmitForm6 ? form6.controls['state'].errors ? 'has-error' : 'has-success' : ''&quot;&gt;
+            &lt;label for=&quot;tlpState&quot;&gt;State&lt;/label&gt;
+            &lt;input id=&quot;tlpState&quot; type=&quot;text&quot; placeholder=&quot;Enter State&quot; class=&quot;form-input mb-2&quot; formControlName=&quot;state&quot; /&gt;
+            &lt;ng-container *ngIf=&quot;isSubmitForm6 &amp;&amp; !form6.controls['state'].errors&quot;&gt;
+                &lt;span class=&quot;rounded bg-[#1abc9c] py-1 px-2 text-white&quot;&gt;Looks Good!&lt;/span&gt;
+            &lt;/ng-container&gt;
+            &lt;ng-container *ngIf=&quot;isSubmitForm6 &amp;&amp; form6.controls['state'].errors&quot;&gt;
+                &lt;span class=&quot;rounded bg-danger py-1 px-2 text-white&quot;&gt;Please provide a valid state.&lt;/span&gt;
+            &lt;/ng-container&gt;
+        &lt;/div&gt;
+        &lt;div [ngClass]=&quot;isSubmitForm6 ? form6.controls['zip'].errors ? 'has-error' : 'has-success' : ''&quot;&gt;
+            &lt;label for=&quot;tlpZip&quot;&gt;Zip&lt;/label&gt;
+            &lt;input id=&quot;tlpZip&quot; type=&quot;text&quot; placeholder=&quot;Enter Zip&quot; class=&quot;form-input mb-2&quot; formControlName=&quot;zip&quot; /&gt;
+            &lt;ng-container *ngIf=&quot;isSubmitForm6 &amp;&amp; !form6.controls['zip'].errors&quot;&gt;
+                &lt;span class=&quot;rounded bg-[#1abc9c] py-1 px-2 text-white&quot;&gt;Looks Good!&lt;/span&gt;
+            &lt;/ng-container&gt;
+            &lt;ng-container *ngIf=&quot;isSubmitForm6 &amp;&amp; form6.controls['zip'].errors&quot;&gt;
+                &lt;span class=&quot;rounded bg-danger py-1 px-2 text-white&quot;&gt;Please provide a valid Zip.&lt;/span&gt;
+            &lt;/ng-container&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div [ngClass]=&quot;isSubmitForm6 ? form6.controls['isTerms'].errors ? 'has-error' : 'has-success' : ''&quot;&gt;
+        &lt;label class=&quot;flex cursor-pointer items-center&quot;&gt;
+            &lt;input type=&quot;checkbox&quot; class=&quot;form-checkbox&quot; formControlName=&quot;isTerms&quot; /&gt;
+            &lt;span class=&quot;text-white-dark&quot;&gt;Agree to terms and conditions&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;ng-container *ngIf=&quot;isSubmitForm6 &amp;&amp; form6.controls['isTerms'].errors&quot;&gt;
+            &lt;div class=&quot;mt-2&quot;&gt;
+                &lt;span class=&quot;rounded bg-danger py-1 px-2 text-white&quot;&gt;You must agree before submitting.&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/ng-container&gt;
+    &lt;/div&gt;
+    &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary !mt-6&quot;&gt;Submit Form&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- script --&gt;
+constructor(public fb: FormBuilder) {
+    this.initForm();
+}
+initForm() {
+    this.form6 = this.fb.group({
+        firstName: ['Shaun', Validators.required],
+        lastName: ['Park', Validators.required],
+        userName: ['', Validators.required],
+        city: ['', Validators.required],
+        state: ['', Validators.required],
+        zip: ['', Validators.required],
+        isTerms: [false, Validators.requiredTrue],
+    });
+}
+
+form6!: FormGroup;
+isSubmitForm6 = false;
+submitForm6() {
+    this.isSubmitForm6 = true;
+    if (this.form6.valid) {
+        //form validated success
+        this.showMessage('Form submitted successfully.');
+    }
+}
+
+showMessage(msg = '', type = 'success') {
+    const toast: any = Swal.mixin({
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        timer: 3000,
+        customClass: { container: 'toast' },
+    });
+    toast.fire({
+        icon: type,
+        title: msg,
+        padding: '10px 20px',
+    });
+}"></code> </pre>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

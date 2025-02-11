@@ -20,6 +20,7 @@ import { FormularioComponent } from './AtencionCiudadano/formulario';
 import { atencionDatatableComponent } from './AtencionCiudadano/atencion-table';
 import { AgendarEquiposComponent } from './PrestamosEquipos/agendarequipos';
 import { GestionarInsumosComponent } from './PrestamosEquipos/gestionarinsumos-tables';
+import { FormularioInconvenientesComponent } from './Incidentes/formularioinconientes';
 
 const routes: Routes = [
     { path: 'apps/chat', component: ChatComponent, data: { title: 'Chat' } },
@@ -37,7 +38,7 @@ const routes: Routes = [
     { path: 'Atencion-Ciudadano/Consultar-Ingreso', component: atencionDatatableComponent, data: { title: 'Consultar Ingreso' } },
     { path: 'Prestamos/Agendar', component: AgendarEquiposComponent, data: { title: 'Agendar Insumos' } },
     { path: 'Prestamos/Gestionar', component: GestionarInsumosComponent, data: { title: 'Gestionar Insumos' } },
-
+    { path: 'Incidencias/Formulario', component: FormularioInconvenientesComponent, data: { title: 'Formulario Incidentes' } },
 
 
 ];
@@ -59,7 +60,8 @@ const routes: Routes = [
         FormularioComponent,
         atencionDatatableComponent,
         AgendarEquiposComponent,
-        GestionarInsumosComponent
+        GestionarInsumosComponent,
+        FormularioInconvenientesComponent
     ],
 })
 export class AppsModule {}
