@@ -21,6 +21,9 @@ import { atencionDatatableComponent } from './AtencionCiudadano/atencion-table';
 import { AgendarEquiposComponent } from './PrestamosEquipos/agendarequipos';
 import { GestionarInsumosComponent } from './PrestamosEquipos/gestionarinsumos-tables';
 import { FormularioInconvenientesComponent } from './Incidentes/formularioinconientes';
+import { PqrFormComponent } from './PQR/pqr-form/pqr-form.component';
+import { PqrListComponent } from './PQR/pqr-list/pqr-list.component';
+import { PqrDetailComponent } from './PQR/pqr-detail/pqr-detail.component';
 
 const routes: Routes = [
     { path: 'apps/chat', component: ChatComponent, data: { title: 'Chat' } },
@@ -39,8 +42,9 @@ const routes: Routes = [
     { path: 'Prestamos/Agendar', component: AgendarEquiposComponent, data: { title: 'Agendar Insumos' } },
     { path: 'Prestamos/Gestionar', component: GestionarInsumosComponent, data: { title: 'Gestionar Insumos' } },
     { path: 'Incidencias/Formulario', component: FormularioInconvenientesComponent, data: { title: 'Formulario Incidentes' } },
-
-
+    { path: 'PQR/Realizar', component: PqrFormComponent, data: { title: 'Realizar pqr' } },
+    { path: 'PQR/Seguimiento', component: PqrDetailComponent, data: { title: 'Seguieminto de pqr' } },
+    { path: 'PQR/Solicitudes', component: PqrListComponent, data: { title: 'PQR Solicitudes' } },
 ];
 
 @NgModule({
@@ -61,7 +65,10 @@ const routes: Routes = [
         atencionDatatableComponent,
         AgendarEquiposComponent,
         GestionarInsumosComponent,
-        FormularioInconvenientesComponent
+        FormularioInconvenientesComponent,
+        PqrFormComponent,
+        PqrListComponent,
+        PqrDetailComponent
     ],
 })
 export class AppsModule {}
