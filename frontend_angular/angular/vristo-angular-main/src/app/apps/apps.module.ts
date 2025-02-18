@@ -24,6 +24,8 @@ import { FormularioInconvenientesComponent } from './Incidentes/formularioinconi
 import { PqrFormComponent } from './PQR/pqr-form/pqr-form.component';
 import { PqrListComponent } from './PQR/pqr-list/pqr-list.component';
 import { PqrDetailComponent } from './PQR/pqr-detail/pqr-detail.component';
+import { PqrEditComponent } from './PQR/pqr-list/pqr-components/pqredit.component';
+import { PqrViewComponent } from './PQR/pqr-list/pqr-components/pqrview.component';
 
 const routes: Routes = [
     { path: 'apps/chat', component: ChatComponent, data: { title: 'Chat' } },
@@ -68,7 +70,9 @@ const routes: Routes = [
         FormularioInconvenientesComponent,
         PqrFormComponent,
         PqrListComponent,
-        PqrDetailComponent
+        PqrDetailComponent,
+        PqrEditComponent,
+        PqrViewComponent
     ],
 })
 export class AppsModule {}
