@@ -30,7 +30,7 @@ export function HttpLoaderFactory(httpHandler: HttpBackend): TranslateHttpLoader
 import { IndexComponent } from './index';
 import { AnalyticsComponent } from './analytics';
 import { FinanceComponent } from './finance';
-import { CryptoComponent } from './crypto';
+
 
 // widgets
 import { WidgetsComponent } from './widgets';
