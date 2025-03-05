@@ -90,7 +90,6 @@ import { ThemeCustomizerComponent } from './layouts/theme-customizer';
         IndexComponent,
         AnalyticsComponent,
         FinanceComponent,
-        CryptoComponent,
         WidgetsComponent,
         DragndropComponent,
         AppLayout,
