@@ -4,7 +4,6 @@ import { Routes } from '@angular/router';
 import { IndexComponent } from './index';
 import { AnalyticsComponent } from './analytics';
 import { FinanceComponent } from './finance';
-import { CryptoComponent } from './crypto';
 
 // widgets
 import { WidgetsComponent } from './widgets';
@@ -38,7 +37,6 @@ export const routes: Routes = [
             { path: '', component: IndexComponent, data: { title: 'Sales Admin' } },
             { path: 'analytics', component: AnalyticsComponent, data: { title: 'Analytics Admin' } },
             { path: 'finance', component: FinanceComponent, data: { title: 'Finance Admin' } },
-            { path: 'crypto', component: CryptoComponent, data: { title: 'Crypto Admin' } },
 
             // widgets
             { path: 'widgets', component: WidgetsComponent, data: { title: 'Widgets' } },
