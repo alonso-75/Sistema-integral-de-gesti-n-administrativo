@@ -22,6 +22,8 @@ import { AgendarEquiposComponent } from './PrestamosEquipos/agendarequipos';
 import { GestionarInsumosComponent } from './PrestamosEquipos/gestionarinsumos-tables';
 import { FormularioInconvenientesComponent } from './Incidentes/formularioinconientes';
 import { listPqrsComponent } from './PQR/list-pqrs';
+import { SeguiPqrsComponent } from './PQR/segui-pqrs.component';
+import { title } from 'process';
 
 const routes: Routes = [
     { path: 'apps/chat', component: ChatComponent, data: { title: 'Chat' } },
@@ -41,9 +43,8 @@ const routes: Routes = [
     { path: 'Prestamos/Gestionar', component: GestionarInsumosComponent, data: { title: 'Gestionar Insumos' } },
     { path: 'Incidencias/Formulario', component: FormularioInconvenientesComponent, data: { title: 'Formulario Incidentes' } },
     { path: 'Pqrs/Lista', component: listPqrsComponent, data: { title: 'Componente Pqrs' } },
+    { path: 'Pqrs/segui',component:SeguiPqrsComponent, data:{title:'Seguir Pqrs'} },
 
-
-    
 ];
 
 @NgModule({
@@ -66,7 +67,7 @@ const routes: Routes = [
         GestionarInsumosComponent,
         FormularioInconvenientesComponent,
         listPqrsComponent
-       
+
     ],
 })
 export class AppsModule {}

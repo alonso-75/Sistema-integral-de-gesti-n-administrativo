@@ -1,1 +1,317 @@
-<p>segui prueba cambios</p>
+<div>
+
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold mb-6">Seguimiento de PQRs por Fecha</h1>
+
+        <!-- Filtros de Fecha -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        Fecha Inicial
+                    </label>
+                    <input
+                        type="date"
+                        id="fechaInicial"
+                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                        onchange="filtrarPorFecha()"
+                    >
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        Fecha Final
+                    </label>
+                    <input
+                        type="date"
+                        id="fechaFinal"
+                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                        onchange="filtrarPorFecha()"
+                    >
+                </div>
+                <div class="flex items-end">
+                    <button
+                        onclick="limpiarFiltros()"
+                        class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
+                    >
+                        <i class="fas fa-times mr-2"></i>
+                        Limpiar Filtros
+                    </button>
+                </div>
+            </div>
+
+            <!-- Resumen de PQRs -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
+                <div class="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-4">
+                    <div class="flex items-center">
+                        <div class="rounded-full bg-blue-500/20 p-3">
+                            <i class="fas fa-clipboard-list text-blue-500"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-blue-600 dark:text-blue-400">Total PQRs</p>
+                            <p class="text-2xl font-semibold text-blue-700 dark:text-blue-300">127</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-green-50 dark:bg-green-900/30 rounded-lg p-4">
+                    <div class="flex items-center">
+                        <div class="rounded-full bg-green-500/20 p-3">
+                            <i class="fas fa-check text-green-500"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-green-600 dark:text-green-400">Resueltas</p>
+                            <p class="text-2xl font-semibold text-green-700 dark:text-green-300">85</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-yellow-50 dark:bg-yellow-900/30 rounded-lg p-4">
+                    <div class="flex items-center">
+                        <div class="rounded-full bg-yellow-500/20 p-3">
+                            <i class="fas fa-clock text-yellow-500"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-yellow-600 dark:text-yellow-400">En Proceso</p>
+                            <p class="text-2xl font-semibold text-yellow-700 dark:text-yellow-300">32</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-red-50 dark:bg-red-900/30 rounded-lg p-4">
+                    <div class="flex items-center">
+                        <div class="rounded-full bg-red-500/20 p-3">
+                            <i class="fas fa-exclamation-circle text-red-500"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-red-600 dark:text-red-400">Vencidas</p>
+                            <p class="text-2xl font-semibold text-red-700 dark:text-red-300">10</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla de PQRs -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+            <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                <h2 class="text-lg font-semibold">PQRs Encontradas</h2>
+                <div class="flex items-center space-x-2">
+                    <div class="relative">
+                        <input
+                            type="text"
+                            placeholder="Buscar PQR..."
+                            class="w-64 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white pr-10"
+                            onkeyup="buscarPQR(this.value)"
+                        >
+                        <i class="fas fa-search absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                    <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-md flex items-center">
+                        <i class="fas fa-download mr-2"></i>
+                        Exportar
+                    </button>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50 dark:bg-gray-700">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                Número
+                            </th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                Fecha Radicación
+                            </th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                Tipo
+                            </th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                Estado
+                            </th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                Días Restantes
+                            </th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                Asignado a
+                            </th>
+                            <th class="px-4 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                Acciones
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="text-sm font-medium">PQR-2024-001</span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="text-sm">15/02/2024</span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300">
+                                    Petición
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300">
+                                    En Proceso
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="text-sm font-medium text-yellow-500">8 días</span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-white text-sm font-medium">
+                                        JS
+                                    </div>
+                                    <span class="ml-2 text-sm">Juan Silva</span>
+                                </div>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap text-right">
+                                <div class="relative group inline-block">
+                                    <button class="text-gray-400 hover:text-gray-500">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <div class="absolute right-0 z-10 mt-1 hidden w-48 origin-top-right rounded-md bg-white dark:bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none group-hover:block">
+                                        <div class="py-1">
+                                            <a href="#" class="flex px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                                <i class="fas fa-eye w-4 h-4 mr-2"></i>
+                                                Ver Detalles
+                                            </a>
+                                            <a href="#" class="flex px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                                <i class="fas fa-edit w-4 h-4 mr-2"></i>
+                                                Editar
+                                            </a>
+                                            <a href="#" class="flex px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                                <i class="fas fa-trash w-4 h-4 mr-2"></i>
+                                                Eliminar
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Más filas de ejemplo -->
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="text-sm font-medium">PQR-2024-002</span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="text-sm">14/02/2024</span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300">
+                                    Queja
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
+                                    Resuelta
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <span class="text-sm font-medium text-green-500">Completada</span>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center text-white text-sm font-medium">
+                                        AM
+                                    </div>
+                                    <span class="ml-2 text-sm">Ana Martínez</span>
+                                </div>
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap text-right">
+                                <div class="relative group inline-block">
+                                    <button class="text-gray-400 hover:text-gray-500">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <div class="absolute right-0 z-10 mt-1 hidden w-48 origin-top-right rounded-md bg-white dark:bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none group-hover:block">
+                                        <div class="py-1">
+                                            <a href="#" class="flex px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                                <i class="fas fa-eye w-4 h-4 mr-2"></i>
+                                                Ver Detalles
+                                            </a>
+                                            <a href="#" class="flex px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                                <i class="fas fa-edit w-4 h-4 mr-2"></i>
+                                                Editar
+                                            </a>
+                                            <a href="#" class="flex px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                                <i class="fas fa-trash w-4 h-4 mr-2"></i>
+                                                Eliminar
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Paginación -->
+            <div class="px-4 py-3 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between">
+                <div class="flex-1 flex justify-between sm:hidden">
+                    <button class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700">
+                        Anterior
+                    </button>
+                    <button class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700">
+                        Siguiente
+                    </button>
+                </div>
+                <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                    <div>
+                        <p class="text-sm text-gray-700 dark:text-gray-300">
+                            Mostrando
+                            <span class="font-medium">1</span>
+                            a
+                            <span class="font-medium">10</span>
+                            de
+                            <span class="font-medium">127</span>
+                            resultados
+                        </p>
+                    </div>
+                    <div>
+                        <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                            <button class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                <span class="sr-only">Anterior</span>
+                                <i class="fas fa-chevron-left h-5 w-5"></i>
+                            </button>
+                            <button class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                1
+                            </button>
+                            <button class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 bg-primary text-sm font-medium text-white">
+                                2
+                            </button>
+                            <button class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                3
+                            </button>
+                            <button class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                <span class="sr-only">Siguiente</span>
+                                <i class="fas fa-chevron-right h-5 w-5"></i>
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function filtrarPorFecha() {
+        const fechaInicial = document.getElementById('fechaInicial').value;
+        const fechaFinal = document.getElementById('fechaFinal').value;
+        console.log('Filtrando por fecha:', { fechaInicial, fechaFinal });
+        // Aquí iría la lógica para filtrar por fecha
+    }
+
+    function limpiarFiltros() {
+        document.getElementById('fechaInicial').value = '';
+        document.getElementById('fechaFinal').value = '';
+        console.log('Filtros limpiados');
+        // Aquí iría la lógica para resetear los filtros
+    }
+
+    function buscarPQR(texto) {
+        console.log('Buscando:', texto);
+        // Aquí iría la lógica para buscar PQRs
+    }
+</script>
