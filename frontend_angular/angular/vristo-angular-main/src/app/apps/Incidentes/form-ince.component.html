@@ -1,0 +1,591 @@
+<div>
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold">Registro de Incidentes</h1>
+            <div>
+                <button onclick="toggleDarkMode()" class="p-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 mr-2">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+                <button onclick="window.location.href='seguimiento-fecha-pqrs.html'" class="p-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Volver
+                </button>
+            </div>
+        </div>
+
+        <!-- Formulario de Incidentes -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+            <form id="incidenteForm" onsubmit="guardarIncidente(event)">
+                <!-- Sección: Información Básica -->
+                <div class="mb-6">
+                    <h2 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
+                        <i class="fas fa-info-circle mr-2 text-primary"></i>
+                        Información Básica
+                    </h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="titulo" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Título del Incidente <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="titulo"
+                                name="titulo"
+                                required
+                                placeholder="Breve descripción del incidente"
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                            >
+                        </div>
+
+                        <div>
+                            <label for="referencia" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Número de Referencia
+                            </label>
+                            <input
+                                type="text"
+                                id="referencia"
+                                name="referencia"
+                                placeholder="INC-2024-001"
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white bg-gray-100 dark:bg-gray-600"
+                                readonly
+                            >
+                        </div>
+
+                        <div>
+                            <label for="fecha" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Fecha del Incidente <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="date"
+                                id="fecha"
+                                name="fecha"
+                                required
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                            >
+                        </div>
+
+                        <div>
+                            <label for="hora" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Hora del Incidente <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="time"
+                                id="hora"
+                                name="hora"
+                                required
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                            >
+                        </div>
+
+                        <div>
+                            <label for="ubicacion" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Ubicación <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="ubicacion"
+                                name="ubicacion"
+                                required
+                                placeholder="Lugar donde ocurrió el incidente"
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                            >
+                        </div>
+
+                        <div>
+                            <label for="departamento" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Departamento/Área <span class="text-red-500">*</span>
+                            </label>
+                            <select
+                                id="departamento"
+                                name="departamento"
+                                required
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                            >
+                                <option value="">Seleccione un departamento</option>
+                                <option value="administracion">Administración</option>
+                                <option value="operaciones">Operaciones</option>
+                                <option value="logistica">Logística</option>
+                                <option value="produccion">Producción</option>
+                                <option value="rrhh">Recursos Humanos</option>
+                                <option value="ti">Tecnología de la Información</option>
+                                <option value="ventas">Ventas</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección: Clasificación del Incidente -->
+                <div class="mb-6">
+                    <h2 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
+                        <i class="fas fa-tag mr-2 text-primary"></i>
+                        Clasificación del Incidente
+                    </h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label for="tipo" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Tipo de Incidente <span class="text-red-500">*</span>
+                            </label>
+                            <select
+                                id="tipo"
+                                name="tipo"
+                                required
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                            >
+                                <option value="">Seleccione un tipo</option>
+                                <option value="accidente">Accidente</option>
+                                <option value="casi_accidente">Casi Accidente</option>
+                                <option value="enfermedad">Enfermedad</option>
+                                <option value="ambiental">Ambiental</option>
+                                <option value="seguridad">Seguridad</option>
+                                <option value="calidad">Calidad</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="severidad" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Nivel de Severidad <span class="text-red-500">*</span>
+                            </label>
+                            <select
+                                id="severidad"
+                                name="severidad"
+                                required
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                onchange="cambiarColorSeveridad()"
+                            >
+                                <option value="">Seleccione un nivel</option>
+                                <option value="bajo">Bajo</option>
+                                <option value="medio">Medio</option>
+                                <option value="alto">Alto</option>
+                                <option value="critico">Crítico</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="estado" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Estado <span class="text-red-500">*</span>
+                            </label>
+                            <select
+                                id="estado"
+                                name="estado"
+                                required
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                            >
+                                <option value="abierto">Abierto</option>
+                                <option value="en_investigacion">En Investigación</option>
+                                <option value="en_revision">En Revisión</option>
+                                <option value="cerrado">Cerrado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección: Detalles del Incidente -->
+                <div class="mb-6">
+                    <h2 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
+                        <i class="fas fa-clipboard-list mr-2 text-primary"></i>
+                        Detalles del Incidente
+                    </h2>
+
+                    <div class="mb-4">
+                        <label for="descripcion" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                            Descripción Detallada <span class="text-red-500">*</span>
+                        </label>
+                        <textarea
+                            id="descripcion"
+                            name="descripcion"
+                            rows="4"
+                            required
+                            placeholder="Describa detalladamente qué ocurrió, cómo ocurrió y por qué ocurrió..."
+                            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                        ></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="involucrados" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Personas Involucradas
+                            </label>
+                            <textarea
+                                id="involucrados"
+                                name="involucrados"
+                                rows="3"
+                                placeholder="Nombres de las personas involucradas en el incidente"
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                            ></textarea>
+                        </div>
+
+                        <div>
+                            <label for="testigos" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Testigos
+                            </label>
+                            <textarea
+                                id="testigos"
+                                name="testigos"
+                                rows="3"
+                                placeholder="Nombres de los testigos del incidente"
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                            ></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección: Impacto y Acciones -->
+                <div class="mb-6">
+                    <h2 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
+                        <i class="fas fa-exclamation-triangle mr-2 text-primary"></i>
+                        Impacto y Acciones
+                    </h2>
+
+                    <div class="mb-4">
+                        <label for="impacto" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                            Impacto (Daños, Lesiones, etc.)
+                        </label>
+                        <textarea
+                            id="impacto"
+                            name="impacto"
+                            rows="3"
+                            placeholder="Describa los daños, lesiones o impactos causados por el incidente"
+                            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                        ></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="acciones_inmediatas" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Acciones Inmediatas Tomadas
+                            </label>
+                            <textarea
+                                id="acciones_inmediatas"
+                                name="acciones_inmediatas"
+                                rows="3"
+                                placeholder="Describa las acciones inmediatas que se tomaron para mitigar el incidente"
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                            ></textarea>
+                        </div>
+
+                        <div>
+                            <label for="acciones_correctivas" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Acciones Correctivas Propuestas
+                            </label>
+                            <textarea
+                                id="acciones_correctivas"
+                                name="acciones_correctivas"
+                                rows="3"
+                                placeholder="Describa las acciones correctivas propuestas para evitar que el incidente se repita"
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                            ></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección: Seguimiento -->
+                <div class="mb-6">
+                    <h2 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
+                        <i class="fas fa-user-check mr-2 text-primary"></i>
+                        Seguimiento
+                    </h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label for="responsable" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Responsable de Seguimiento <span class="text-red-500">*</span>
+                            </label>
+                            <select
+                                id="responsable"
+                                name="responsable"
+                                required
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                            >
+                                <option value="">Seleccione un responsable</option>
+                                <option value="juan_perez">Juan Pérez</option>
+                                <option value="maria_rodriguez">María Rodríguez</option>
+                                <option value="carlos_gomez">Carlos Gómez</option>
+                                <option value="ana_martinez">Ana Martínez</option>
+                                <option value="luis_sanchez">Luis Sánchez</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="fecha_limite" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Fecha Límite de Resolución
+                            </label>
+                            <input
+                                type="date"
+                                id="fecha_limite"
+                                name="fecha_limite"
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                            >
+                        </div>
+
+                        <div>
+                            <label for="prioridad" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                Prioridad <span class="text-red-500">*</span>
+                            </label>
+                            <select
+                                id="prioridad"
+                                name="prioridad"
+                                required
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                            >
+                                <option value="">Seleccione una prioridad</option>
+                                <option value="baja">Baja</option>
+                                <option value="media">Media</option>
+                                <option value="alta">Alta</option>
+                                <option value="urgente">Urgente</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección: Archivos Adjuntos -->
+                <div class="mb-6">
+                    <h2 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
+                        <i class="fas fa-paperclip mr-2 text-primary"></i>
+                        Archivos Adjuntos
+                    </h2>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                            Evidencias (Fotos, Documentos, etc.)
+                        </label>
+                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-md">
+                            <div class="space-y-1 text-center">
+                                <i class="fas fa-cloud-upload-alt text-gray-400 text-3xl mb-2"></i>
+                                <div class="flex text-sm text-gray-600 dark:text-gray-400">
+                                    <label for="archivos" class="relative cursor-pointer bg-white dark:bg-gray-700 rounded-md font-medium text-primary hover:text-primary-light focus-within:outline-none">
+                                        <span>Subir archivos</span>
+                                        <input id="archivos" name="archivos" type="file" class="sr-only" multiple>
+                                    </label>
+                                    <p class="pl-1">o arrastre y suelte aquí</p>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">
+                                    PNG, JPG, PDF hasta 10MB
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="archivos_preview" class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
+                        <!-- Los archivos seleccionados se mostrarán aquí -->
+                    </div>
+                </div>
+
+                <!-- Botones de Acción -->
+                <div class="flex justify-end space-x-4 mt-8">
+                    <button
+                        type="button"
+                        class="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700"
+                        onclick="limpiarFormulario()"
+                    >
+                        <i class="fas fa-times mr-2"></i>
+                        Cancelar
+                    </button>
+                    <button
+                        type="button"
+                        class="px-4 py-2 border border-primary text-primary rounded-md hover:bg-primary-light dark:hover:bg-primary/20"
+                        onclick="guardarBorrador()"
+                    >
+                        <i class="fas fa-save mr-2"></i>
+                        Guardar Borrador
+                    </button>
+                    <button
+                        type="submit"
+                        class="px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-md"
+                    >
+                        <i class="fas fa-paper-plane mr-2"></i>
+                        Enviar Reporte
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+</div>
+<script>
+    // Generar número de referencia automáticamente
+    window.onload = function() {
+        const fecha = new Date();
+        const año = fecha.getFullYear();
+        const numeroAleatorio = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+        document.getElementById('referencia').value = `INC-${año}-${numeroAleatorio}`;
+
+        // Establecer fecha actual por defecto
+        const fechaActual = fecha.toISOString().split('T')[0];
+        document.getElementById('fecha').value = fechaActual;
+
+        // Configurar manejo de archivos
+        document.getElementById('archivos').addEventListener('change', mostrarArchivosSeleccionados);
+    };
+
+    // Cambiar color según severidad
+    function cambiarColorSeveridad() {
+        const severidad = document.getElementById('severidad').value;
+        const selectElement = document.getElementById('severidad');
+
+        // Resetear clases
+        selectElement.className = "w-full px-3 py-2 border rounded-md dark:bg-gray-700 dark:text-white";
+
+        // Aplicar clase según severidad
+        switch(severidad) {
+            case 'bajo':
+                selectElement.classList.add('border-green-500', 'bg-green-50', 'dark:bg-green-900/20');
+                break;
+            case 'medio':
+                selectElement.classList.add('border-yellow-500', 'bg-yellow-50', 'dark:bg-yellow-900/20');
+                break;
+            case 'alto':
+                selectElement.classList.add('border-orange-500', 'bg-orange-50', 'dark:bg-orange-900/20');
+                break;
+            case 'critico':
+                selectElement.classList.add('border-red-500', 'bg-red-50', 'dark:bg-red-900/20');
+                break;
+            default:
+                selectElement.classList.add('border-gray-300', 'dark:border-gray-600');
+        }
+    }
+
+    // Mostrar archivos seleccionados
+    function mostrarArchivosSeleccionados(event) {
+        const archivos = event.target.files;
+        const previewContainer = document.getElementById('archivos_preview');
+        previewContainer.innerHTML = '';
+
+        for (let i = 0; i < archivos.length; i++) {
+            const archivo = archivos[i];
+            const esImagen = archivo.type.startsWith('image/');
+
+            const archivoElement = document.createElement('div');
+            archivoElement.className = 'border border-gray-200 dark:border-gray-700 rounded-md p-2 flex items-center';
+
+            if (esImagen) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(archivo);
+                img.className = 'w-12 h-12 object-cover rounded-md mr-2';
+                archivoElement.appendChild(img);
+            } else {
+                const iconoElement = document.createElement('div');
+                iconoElement.className = 'w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-md flex items-center justify-center mr-2';
+
+                const icono = document.createElement('i');
+                if (archivo.type.includes('pdf')) {
+                    icono.className = 'fas fa-file-pdf text-red-500 text-xl';
+                } else if (archivo.type.includes('word') || archivo.type.includes('document')) {
+                    icono.className = 'fas fa-file-word text-blue-500 text-xl';
+                } else if (archivo.type.includes('excel') || archivo.type.includes('sheet')) {
+                    icono.className = 'fas fa-file-excel text-green-500 text-xl';
+                } else {
+                    icono.className = 'fas fa-file text-gray-500 text-xl';
+                }
+
+                iconoElement.appendChild(icono);
+                archivoElement.appendChild(iconoElement);
+            }
+
+            const infoElement = document.createElement('div');
+            infoElement.className = 'flex-1 overflow-hidden';
+
+            const nombreElement = document.createElement('p');
+            nombreElement.className = 'text-sm font-medium truncate';
+            nombreElement.textContent = archivo.name;
+
+            const tamañoElement = document.createElement('p');
+            tamañoElement.className = 'text-xs text-gray-500 dark:text-gray-400';
+            tamañoElement.textContent = formatearTamaño(archivo.size);
+
+            infoElement.appendChild(nombreElement);
+            infoElement.appendChild(tamañoElement);
+
+            const eliminarBtn = document.createElement('button');
+            eliminarBtn.type = 'button';
+            eliminarBtn.className = 'ml-2 text-gray-400 hover:text-red-500';
+            eliminarBtn.innerHTML = '<i class="fas fa-times"></i>';
+            eliminarBtn.onclick = function() {
+                archivoElement.remove();
+            };
+
+            archivoElement.appendChild(infoElement);
+            archivoElement.appendChild(eliminarBtn);
+
+            previewContainer.appendChild(archivoElement);
+        }
+    }
+
+    // Formatear tamaño de archivo
+    function formatearTamaño(bytes) {
+        if (bytes === 0) return '0 Bytes';
+
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    // Guardar incidente
+    function guardarIncidente(event) {
+        event.preventDefault();
+
+        // Aquí iría la lógica para enviar los datos al servidor
+        const formData = new FormData(document.getElementById('incidenteForm'));
+        console.log('Enviando reporte de incidente...');
+
+        // Simulación de envío exitoso
+        alert('Reporte de incidente enviado correctamente');
+
+        // Redireccionar o limpiar formulario
+        limpiarFormulario();
+    }
+
+    // Guardar borrador
+    function guardarBorrador() {
+        // Aquí iría la lógica para guardar un borrador
+        console.log('Guardando borrador...');
+
+        // Simulación de guardado exitoso
+        alert('Borrador guardado correctamente');
+    }
+
+    // Limpiar formulario
+    function limpiarFormulario() {
+        document.getElementById('incidenteForm').reset();
+        document.getElementById('archivos_preview').innerHTML = '';
+
+        // Regenerar número de referencia
+        const fecha = new Date();
+        const año = fecha.getFullYear();
+        const numeroAleatorio = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+        document.getElementById('referencia').value = `INC-${año}-${numeroAleatorio}`;
+
+        // Establecer fecha actual
+        const fechaActual = fecha.toISOString().split('T')[0];
+        document.getElementById('fecha').value = fechaActual;
+    }
+
+    // Alternar modo oscuro
+    function toggleDarkMode() {
+        document.documentElement.classList.toggle('dark');
+
+        // Opcional: guardar preferencia en localStorage
+        if (document.documentElement.classList.contains('dark')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
+    }
+
+    // Verificar preferencia de tema guardada
+    if (localStorage.getItem('theme') === 'dark' ||
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+</script>
+

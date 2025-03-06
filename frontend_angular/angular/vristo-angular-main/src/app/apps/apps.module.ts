@@ -23,6 +23,7 @@ import { GestionarInsumosComponent } from './PrestamosEquipos/gestionarinsumos-t
 import { FormularioInconvenientesComponent } from './Incidentes/formularioinconientes';
 import { listPqrsComponent } from './PQR/list-pqrs';
 import { SeguiPqrsComponent } from './PQR/segui-pqrs.component';
+import { FormInceComponent } from './Incidentes/form-ince.component';
 import { title } from 'process';
 
 const routes: Routes = [
@@ -44,7 +45,7 @@ const routes: Routes = [
     { path: 'Incidencias/Formulario', component: FormularioInconvenientesComponent, data: { title: 'Formulario Incidentes' } },
     { path: 'Pqrs/Lista', component: listPqrsComponent, data: { title: 'Componente Pqrs' } },
     { path: 'Pqrs/segui',component:SeguiPqrsComponent, data:{title:'Seguir Pqrs'} },
-
+    {path:  'incidencias/form-ince',component: FormInceComponent, data:{title:'Formularion de incidentes'}}
 ];
 
 @NgModule({
@@ -66,7 +67,7 @@ const routes: Routes = [
         AgendarEquiposComponent,
         GestionarInsumosComponent,
         FormularioInconvenientesComponent,
-        listPqrsComponent
+        listPqrsComponent,
 
     ],
 })
