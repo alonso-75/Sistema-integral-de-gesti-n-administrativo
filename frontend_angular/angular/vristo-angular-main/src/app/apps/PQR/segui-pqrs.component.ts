@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { faSearch, faDownload, faTimes, faEllipsisV, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+// import { faSearch, faDownload, faTimes, faEllipsisV, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 interface Pqr {
   id: number;
@@ -23,12 +23,12 @@ interface Pqr {
 })
 export class SeguiPqrsComponent implements OnInit {
   // Iconos
-  faSearch = faSearch;
-  faDownload = faDownload;
-  faTimes = faTimes;
-  faEllipsisV = faEllipsisV;
-  faChevronLeft = faChevronLeft;
-  faChevronRight = faChevronRight;
+  // faSearch = faSearch;
+  // faDownload = faDownload;
+  // faTimes = faTimes;
+  // faEllipsisV = faEllipsisV;
+  // faChevronLeft = faChevronLeft;
+  // faChevronRight = faChevronRight;
 
   // Datos y Filtros
   pqrsList: Pqr[] = [];

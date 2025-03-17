@@ -46,7 +46,7 @@ const routes: Routes = [
     { path: 'Pqrs/Lista', component: listPqrsComponent, data: { title: 'Componente Pqrs' } },
     { path: 'Pqrs/segui',component:SeguiPqrsComponent, data:{title:'Seguir Pqrs'} },
     {path:  'incidencias/form-ince',component: FormInceComponent, data:{title:'Formularion de incidentes'}},
-    {path:  'indidencias/historial',component: HistoInceComponent, data:{title:'Historial de incidentes'}},
+    {path:  'incidencias/historial',component: HistoInceComponent, data:{title:'Historial de incidentes'}},
 ];
 
 @NgModule({
