@@ -24,7 +24,7 @@ import { FormularioInconvenientesComponent } from './Incidentes/formularioinconi
 import { listPqrsComponent } from './PQR/list-pqrs';
 import { SeguiPqrsComponent } from './PQR/segui-pqrs.component';
 import { FormInceComponent } from './Incidentes/form-ince.component';
-import { title } from 'process';
+import { HistoInceComponent } from './Incidentes/histo-ince.component';
 
 const routes: Routes = [
     { path: 'apps/chat', component: ChatComponent, data: { title: 'Chat' } },
@@ -45,7 +45,8 @@ const routes: Routes = [
     { path: 'Incidencias/Formulario', component: FormularioInconvenientesComponent, data: { title: 'Formulario Incidentes' } },
     { path: 'Pqrs/Lista', component: listPqrsComponent, data: { title: 'Componente Pqrs' } },
     { path: 'Pqrs/segui',component:SeguiPqrsComponent, data:{title:'Seguir Pqrs'} },
-    {path:  'incidencias/form-ince',component: FormInceComponent, data:{title:'Formularion de incidentes'}}
+    {path:  'incidencias/form-ince',component: FormInceComponent, data:{title:'Formularion de incidentes'}},
+    {path:  'indidencias/historial',component: HistoInceComponent, data:{title:'Historial de incidentes'}},
 ];
 
 @NgModule({
