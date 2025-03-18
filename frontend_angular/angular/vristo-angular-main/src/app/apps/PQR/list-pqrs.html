@@ -24,7 +24,7 @@
                         >
                             <div class="flex items-center">
                                 <icon-list-check class="h-4.5 w-4.5 shrink-0" />
-                                <div class="ltr:ml-3 rtl:mr-3">Inbox</div>
+                                <div class="ltr:ml-3 rtl:mr-3">Bandeja de entrada</div>
                             </div>
                             <div class="whitespace-nowrap rounded-md bg-primary-light px-2 py-0.5 font-semibold dark:bg-[#060818]">
                                 {{ this.allTasks.length - getTasksLength('trash') }}
@@ -38,7 +38,7 @@
                         >
                             <div class="flex items-center">
                                 <icon-thumb-up class="h-5 w-5 shrink-0" />
-                                <div class="ltr:ml-3 rtl:mr-3">Done</div>
+                                <div class="ltr:ml-3 rtl:mr-3">Completadas</div>
                             </div>
                             <div class="whitespace-nowrap rounded-md bg-primary-light px-2 py-0.5 font-semibold dark:bg-[#060818]">
                                 {{ getTasksLength('complete') }}
@@ -53,7 +53,7 @@
                             <div class="flex items-center">
                                 <icon-star class="shrink-0" />
 
-                                <div class="ltr:ml-3 rtl:mr-3">Important</div>
+                                <div class="ltr:ml-3 rtl:mr-3">Importantes</div>
                             </div>
                             <div class="whitespace-nowrap rounded-md bg-primary-light px-2 py-0.5 font-semibold dark:bg-[#060818]">
                                 {{ getTasksLength('important') }}
@@ -86,31 +86,31 @@
                         <button
                             type="button"
                             class="flex h-10 w-full items-center rounded-md p-1 font-medium text-warning duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]"
-                            [ngClass]="{ 'ltr:pl-3 rtl:pr-3 bg-gray-100 dark:bg-[#181F32]': selectedTab === 'low' }"
-                            (click)="tabChanged('low')"
+                            [ngClass]="{ 'ltr:pl-3 rtl:pr-3 bg-gray-100 dark:bg-[#181F32]': selectedTab === 'baja' }"
+                            (click)="tabChanged('baja')"
                         >
                             <icon-square-rotated class="shrink-0 fill-warning" />
-                            <div class="ltr:ml-3 rtl:mr-3">Low</div>
+                            <div class="ltr:ml-3 rtl:mr-3">baja</div>
                         </button>
 
                         <button
                             type="button"
                             class="flex h-10 w-full items-center rounded-md p-1 font-medium text-primary duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]"
-                            [ngClass]="{ 'ltr:pl-3 rtl:pr-3 bg-gray-100 dark:bg-[#181F32]': selectedTab === 'medium' }"
-                            (click)="tabChanged('medium')"
+                            [ngClass]="{ 'ltr:pl-3 rtl:pr-3 bg-gray-100 dark:bg-[#181F32]': selectedTab === 'media' }"
+                            (click)="tabChanged('media')"
                         >
                             <icon-square-rotated class="shrink-0 fill-primary" />
-                            <div class="ltr:ml-3 rtl:mr-3">Medium</div>
+                            <div class="ltr:ml-3 rtl:mr-3">media</div>
                         </button>
 
                         <button
                             type="button"
                             class="flex h-10 w-full items-center rounded-md p-1 font-medium text-danger duration-300 hover:bg-white-dark/10 ltr:hover:pl-3 rtl:hover:pr-3 dark:hover:bg-[#181F32]"
-                            [ngClass]="{ 'ltr:pl-3 rtl:pr-3 bg-gray-100 dark:bg-[#181F32]': selectedTab === 'high' }"
-                            (click)="tabChanged('high')"
+                            [ngClass]="{ 'ltr:pl-3 rtl:pr-3 bg-gray-100 dark:bg-[#181F32]': selectedTab === 'alta' }"
+                            (click)="tabChanged('alta')"
                         >
                             <icon-square-rotated class="shrink-0 fill-danger" />
-                            <div class="ltr:ml-3 rtl:mr-3">High</div>
+                            <div class="ltr:ml-3 rtl:mr-3">alta</div>
                         </button>
 
                         <button
@@ -137,7 +137,9 @@
             class="overlay absolute z-[5] hidden h-full w-full rounded-md bg-black/60"
             [ngClass]="{ '!block xl:!hidden': isShowTaskMenu }"
             (click)="isShowTaskMenu = !isShowTaskMenu"
-        ></div>
+        >
+            <!-- Haz clic para cerrar el menú de tareas -->
+        </div>
         <div class="panel h-full flex-1 overflow-auto p-0">
             <div class="flex h-full flex-col">
                 <div class="flex w-full flex-col gap-4 p-4 sm:flex-row sm:items-center">
@@ -149,7 +151,7 @@
                             <input
                                 type="text"
                                 class="peer form-input ltr:!pr-10 rtl:!pl-10"
-                                placeholder="Search Task..."
+                                placeholder="Buscar tarea..."
                                 name="searchTask"
                                 [(ngModel)]="searchTask"
                                 (ngModelChange)="searchTasks()"
@@ -160,7 +162,7 @@
                         </div>
                     </div>
                     <div class="flex flex-1 items-center justify-center sm:flex-auto sm:justify-end">
-                        <p class="ltr:mr-3 rtl:ml-3">{{ pager.startIndex + 1 + '-' + (pager.endIndex + 1) + ' of ' + filteredTasks.length }}</p>
+                        <p class="ltr:mr-3 rtl:ml-3">{{ pager.startIndex + 1 + '-' + (pager.endIndex + 1) + ' de ' + filteredTasks.length }}</p>
                         <button
                             type="button"
                             [disabled]="pager.currentPage == 1"
@@ -221,12 +223,12 @@
                                                             href="javascript:;"
                                                             class="badge rounded-full capitalize hover:top-0 hover:text-white"
                                                             [ngClass]="{
-                                                                    'badge-outline-primary hover:bg-primary': task.priority === 'medium',
-                                                                    'badge-outline-warning hover:bg-warning': task.priority === 'low',
-                                                                    'badge-outline-danger hover:bg-danger': task.priority === 'high',
-                                                                    'text-white bg-primary': task.priority === 'medium' && isPriorityMenu === task.id,
-                                                                    'text-white bg-warning': task.priority === 'low' && isPriorityMenu === task.id,
-                                                                    'text-white bg-danger': task.priority === 'high' && isPriorityMenu === task.id}"
+                                                                    'badge-outline-primary hover:bg-primary': task.priority === 'media',
+                                                                    'badge-outline-warning hover:bg-warning': task.priority === 'baja',
+                                                                    'badge-outline-danger hover:bg-danger': task.priority === 'alta',
+                                                                    'text-white bg-primary': task.priority === 'media' && isPriorityMenu === task.id,
+                                                                    'text-white bg-warning': task.priority === 'baja' && isPriorityMenu === task.id,
+                                                                    'text-white bg-danger': task.priority === 'alta' && isPriorityMenu === task.id}"
                                                         >
                                                             {{ task.priority }}
                                                         </a>
@@ -236,9 +238,9 @@
                                                                     type="button"
                                                                     *hlMenuItem="let menuItem"
                                                                     class="w-full text-danger ltr:text-left rtl:text-right"
-                                                                    (click)="setPriority(task, 'high')"
+                                                                    (click)="setPriority(task, 'alta')"
                                                                 >
-                                                                    High
+                                                                    Alta
                                                                 </button>
                                                             </li>
                                                             <li>
@@ -246,9 +248,9 @@
                                                                     type="button"
                                                                     *hlMenuItem="let menuItem"
                                                                     class="w-full text-primary ltr:text-left rtl:text-right"
-                                                                    (click)="setPriority(task, 'medium')"
+                                                                    (click)="setPriority(task, 'media')"
                                                                 >
-                                                                    Medium
+                                                                    Media
                                                                 </button>
                                                             </li>
                                                             <li>
@@ -256,9 +258,9 @@
                                                                     type="button"
                                                                     *hlMenuItem="let menuItem"
                                                                     class="w-full text-warning ltr:text-left rtl:text-right"
-                                                                    (click)="setPriority(task, 'low')"
+                                                                    (click)="setPriority(task, 'alta')"
                                                                 >
-                                                                    Low
+                                                                    Baja
                                                                 </button>
                                                             </li>
                                                         </ul>
@@ -286,7 +288,7 @@
                                                                     class="w-full text-success"
                                                                     (click)="setTag(task, 'team')"
                                                                 >
-                                                                    Team
+                                                                    Equipo
                                                                 </button>
                                                             </li>
                                                             <li>
@@ -296,12 +298,12 @@
                                                                     class="w-full text-info"
                                                                     (click)="setTag(task, 'update')"
                                                                 >
-                                                                    Update
+                                                                    Actualización
                                                                 </button>
                                                             </li>
                                                             <li>
                                                                 <button type="button" *hlMenuItem="let menuItem" class="w-full" (click)="setTag(task, '')">
-                                                                    None
+                                                                    Ninguno
                                                                 </button>
                                                             </li>
                                                         </ul>
@@ -343,19 +345,19 @@
                                                                 <a href="javascript:;" *hlMenuItem="let menuItem" (click)="addEditTask(task)">
                                                                     <icon-pencil-paper class="w-4.5 h-4.5 ltr:mr-2 rtl:ml-2 shrink-0" />
 
-                                                                    Edit
+                                                                    Editar
                                                                 </a>
                                                             </li>
                                                             <li>
                                                                 <a href="javascript:;" *hlMenuItem="let menuItem" (click)="deleteTask(task, 'delete')">
                                                                     <icon-trash-lines class="ltr:mr-2 rtl:ml-2 shrink-0" />
-                                                                    Delete
+                                                                    Eliminar
                                                                 </a>
                                                             </li>
                                                             <li>
                                                                 <a href="javascript:;" *hlMenuItem="let menuItem" (click)="setImportant(task)">
                                                                     <icon-star class="w-4.5 h-4.5 ltr:mr-2 rtl:ml-2 shrink-0" />
-                                                                    <span> {{ task.status === 'important' ? 'Not Important' : 'Important' }} </span>
+                                                                    <span> {{ task.status === 'important' ? 'No importante' : 'Importante' }} </span>
                                                                 </a>
                                                             </li>
                                                         </ng-container>
@@ -363,13 +365,13 @@
                                                             <li>
                                                                 <a href="javascript:;" *hlMenuItem="let menuItem" (click)="deleteTask(task, 'deletePermanent')">
                                                                     <icon-trash-lines class="ltr:mr-2 rtl:ml-2 shrink-0" />
-                                                                    Permanent Delete
+                                                                    Eliminar permanentemente
                                                                 </a>
                                                             </li>
                                                             <li>
                                                                 <a href="javascript:;" *hlMenuItem="let menuItem" (click)="deleteTask(task, 'restore')">
                                                                     <icon-restore class="ltr:mr-2 rtl:ml-2 shrink-0" />
-                                                                    Restore Task
+                                                                    Restaurar tarea
                                                                 </a>
                                                             </li>
                                                         </ng-container>
@@ -384,194 +386,274 @@
                     </div>
                 </ng-container>
                 <ng-container *ngIf="!pagedTasks.length">
-                    <div class="flex h-full min-h-[400px] items-center justify-center text-lg font-semibold sm:min-h-[300px]">No data available</div>
+                    <div class="flex h-full min-h-[400px] items-center justify-center text-lg font-semibold sm:min-h-[300px]">No hay datos disponibles</div>
                 </ng-container>
             </div>
         </div>
     </div>
+  <!-- FORMULARIO DE RADICACIÓN DE DOCUMENTOS -->
 
-    <ngx-custom-modal #addTaskModal class="no-footer">
+    <ngx-custom-modal #addTaskModal class="no-footer w-full">
         <ng-template #modalHeader>
-            <div class="!font-medium">{{ params.value.id ? 'Edit Task' : 'Radicacion de PQRSD' }}</div>
+            <div class="!font-medium">{{ params.value.id ? 'Edicion de PQRSD' : 'Creacion de PQRSD' }}</div>
         </ng-template>
         <ng-template #modalBody>
-            <div class="max-w-5xl mx-auto bg-white rounded-lg shadow-md p-6">
-                <h1 class="text-xl font-bold text-center mb-2">Radicación de Documentos</h1>
+            <div class="max-w-5xl mx-auto p-6 bg-white rounded-xl shadow-sm">
+                <h1 class="text-2xl font-bold text-center mb-6 text-gray-800">Formulario de Ventanilla Única</h1>
                 
-                <div class="border rounded-lg p-5">
-                    <h2 class="text-lg font-semibold mb-1">Formulario de Radicación de Documentos</h2>
-                    <p class="text-sm text-amber-600 mb-4">Complete todos los campos para registrar su nuevo documento.</p>
-                    
-                    <form>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <!-- Primera fila -->
-                            <div>
-                                <label class="block text-sm font-medium text-blue-700 mb-1">Radicación</label>
-                                <input type="text" placeholder="Número de radicación" class="w-full border rounded p-2 text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-blue-700 mb-1">Fecha de Recibo</label>
-                                <div class="relative">
-                                    <input type="date" value="2025-03-17" class="w-full border rounded p-2 text-sm">
-                                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                        <svg class="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Segunda fila -->
-                            <div>
-                                <label class="block text-sm font-medium text-blue-700 mb-1">Remitente</label>
-                                <input type="text" placeholder="Nombre del remitente" class="w-full border rounded p-2 text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-blue-700 mb-1">Tipo de Solicitud</label>
-                                <div class="relative">
-                                    <select class="w-full border rounded p-2 text-sm appearance-none bg-white">
-                                        <option selected disabled>Seleccionar tipo de solicitud</option>
-                                        <option>Petición</option>
-                                        <option>Queja</option>
-                                        <option>Reclamo</option>
-                                        <option>Solicitud de información</option>
-                                    </select>
-                                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                        <svg class="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Tercera fila -->
-                            <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-blue-700 mb-1">Asunto</label>
-                                <input type="text" placeholder="Asunto del documento" class="w-full border rounded p-2 text-sm">
-                            </div>
-                            
-                            <!-- Cuarta fila -->
-                            <div>
-                                <label class="block text-sm font-medium text-blue-700 mb-1">Folios</label>
-                                <input type="number" placeholder="Número de folios" class="w-full border rounded p-2 text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-blue-700 mb-1">Recibido</label>
-                                <div class="relative">
-                                    <select class="w-full border rounded p-2 text-sm appearance-none bg-white">
-                                        <option selected disabled>Seleccionar modo de recepción</option>
-                                        <option>Correo electrónico</option>
-                                        <option>Ventanilla</option>
-                                        <option>Mensajería</option>
-                                        <option>Personal</option>
-                                    </select>
-                                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                        <svg class="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Quinta fila -->
-                            <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-blue-700 mb-1">Razón</label>
-                                <textarea rows="4" placeholder="Razón del documento" class="w-full border rounded p-2 text-sm"></textarea>
-                            </div>
-                            
-                            <!-- Sexta fila -->
-                            <div>
-                                <label class="block text-sm font-medium text-blue-700 mb-1">Responsable</label>
-                                <input type="text" placeholder="Nombre del responsable" class="w-full border rounded p-2 text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-blue-700 mb-1">Fecha Entrega a Responsable</label>
-                                <div class="relative">
-                                    <input type="date" value="2025-03-17" class="w-full border rounded p-2 text-sm">
-                                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                        <svg class="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Séptima fila -->
-                            <div>
-                                <label class="block text-sm font-medium text-blue-700 mb-1">Fecha Vencimiento</label>
-                                <div class="relative">
-                                    <input type="date" value="2025-03-17" class="w-full border rounded p-2 text-sm">
-                                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                        <svg class="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-blue-700 mb-1">Fecha Salida</label>
-                                <div class="relative">
-                                    <input type="date" value="2025-03-17" class="w-full border rounded p-2 text-sm">
-                                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                        <svg class="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Octava fila -->
-                            <div>
-                                <label class="block text-sm font-medium text-blue-700 mb-1">Estado</label>
-                                <div class="relative">
-                                    <select class="w-full border rounded p-2 text-sm appearance-none bg-white">
-                                        <option selected disabled>Seleccionar estado</option>
-                                        <option>En trámite</option>
-                                        <option>Pendiente</option>
-                                        <option>Finalizado</option>
-                                        <option>Archivado</option>
-                                    </select>
-                                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                        <svg class="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-blue-700 mb-1">Días Faltantes</label>
-                                <input type="text" value="Días faltantes" class="w-full border rounded p-2 text-sm bg-gray-100" readonly>
-                            </div>
-                            
-                            <!-- Novena fila -->
-                            <div>
-                                <label class="block text-sm font-medium text-blue-700 mb-1">Cumplimiento</label>
-                                <div class="relative">
-                                    <select class="w-full border rounded p-2 text-sm appearance-none bg-white">
-                                        <option selected disabled>Seleccionar cumplimiento</option>
-                                        <option>A tiempo</option>
-                                        <option>Retrasado</option>
-                                        <option>Vencido</option>
-                                    </select>
-                                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                        <svg class="w-4 h-4 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Botones -->
-                            <div class="mt-8 flex items-center justify-end ltr:text-right rtl:text-left">
-                                <button type="button" class="btn btn-outline-danger" (click)="addTaskModal.close()">Cancel</button>
-                                <button type="submit" class="btn btn-primary ltr:ml-4 rtl:mr-4">{{ params.value.id ? 'Update' : 'Add' }}</button>
-                            </div>
+                <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+                  <form [formGroup]="formVentanilla" (ngSubmit)="onSubmit()">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      
+                      <!-- Primera fila -->
+                      <div class="space-y-2">
+                        <label for="radicacion" class="block text-sm font-medium text-gray-700">Radicación</label>
+                        <div class="relative">
+                          <input 
+                            id="radicacion"
+                            type="text" 
+                            formControlName="radicacion"
+                            placeholder="Número de radicación" 
+                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
+                            [ngClass]="{'border-red-300 focus:border-red-500 focus:ring-red-200': formVentanilla.get('radicacion')?.invalid && formVentanilla.get('radicacion')?.touched}"
+                          >
                         </div>
-                    </form>
+                      </div>
+                      
+                      <div class="space-y-2">
+                        <label for="fechaRecibo" class="block text-sm font-medium text-gray-700">Fecha de Recibo</label>
+                        <div class="relative">
+                          <input 
+                            id="fechaRecibo"
+                            type="date" 
+                            formControlName="fechaRecibo"
+                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
+                            [ngClass]="{'border-red-300 focus:border-red-500 focus:ring-red-200': formVentanilla.get('fechaRecibo')?.invalid && formVentanilla.get('fechaRecibo')?.touched}"
+                          >
+                        </div>
+                      </div>
+                      
+                      <!-- Segunda fila -->
+                      <div class="space-y-2">
+                        <label for="remitente" class="block text-sm font-medium text-gray-700">Remitente</label>
+                        <div class="relative">
+                          <input 
+                            id="remitente"
+                            type="text" 
+                            formControlName="remitente"
+                            placeholder="Nombre del remitente" 
+                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
+                            [ngClass]="{'border-red-300 focus:border-red-500 focus:ring-red-200': formVentanilla.get('remitente')?.invalid && formVentanilla.get('remitente')?.touched}"
+                          >
+                        </div>
+                      </div>
+                      
+                      <div class="space-y-2">
+                        <label for="tipoSolicitud" class="block text-sm font-medium text-gray-700">Tipo de Solicitud</label>
+                        <div class="relative">
+                          <select 
+                            id="tipoSolicitud"
+                            formControlName="tipoSolicitud"
+                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700 appearance-none"
+                            [ngClass]="{'border-red-300 focus:border-red-500 focus:ring-red-200': formVentanilla.get('tipoSolicitud')?.invalid && formVentanilla.get('tipoSolicitud')?.touched}"
+                          >
+                            <option value="" disabled selected>Seleccionar tipo de solicitud</option>
+                            <option value="Petición">Petición</option>
+                            <option value="Queja">Queja</option>
+                            <option value="Reclamo">Reclamo</option>
+                            <option value="Solicitud de información">Solicitud de información</option>
+                          </select>
+                          <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!-- Tercera fila -->
+                      <div class="space-y-2 md:col-span-2">
+                        <label for="asunto" class="block text-sm font-medium text-gray-700">Asunto</label>
+                        <div class="relative">
+                          <input 
+                            id="asunto"
+                            type="text" 
+                            formControlName="asunto"
+                            placeholder="Asunto del documento" 
+                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
+                            [ngClass]="{'border-red-300 focus:border-red-500 focus:ring-red-200': formVentanilla.get('asunto')?.invalid && formVentanilla.get('asunto')?.touched}"
+                          >
+                        </div>
+                      </div>
+                      
+                      <!-- Cuarta fila -->
+                      <div class="space-y-2">
+                        <label for="folios" class="block text-sm font-medium text-gray-700">Folios</label>
+                        <div class="relative">
+                          <input 
+                            id="folios"
+                            type="number" 
+                            formControlName="folios"
+                            placeholder="Número de folios" 
+                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
+                            [ngClass]="{'border-red-300 focus:border-red-500 focus:ring-red-200': formVentanilla.get('folios')?.invalid && formVentanilla.get('folios')?.touched}"
+                          >
+                        </div>
+                      </div>
+                      
+                      <div class="space-y-2">
+                        <label for="recibido" class="block text-sm font-medium text-gray-700">Recibido</label>
+                        <div class="relative">
+                          <select 
+                            id="recibido"
+                            formControlName="recibido"
+                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700 appearance-none"
+                            [ngClass]="{'border-red-300 focus:border-red-500 focus:ring-red-200': formVentanilla.get('recibido')?.invalid && formVentanilla.get('recibido')?.touched}"
+                          >
+                            <option value="" disabled selected>Seleccionar modo de recepción</option>
+                            <option value="Correo electrónico">Correo electrónico</option>
+                            <option value="Ventanilla">Ventanilla</option>
+                            <option value="Mensajería">Mensajería</option>
+                            <option value="Personal">Personal</option>
+                          </select>
+                          <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!-- Quinta fila -->
+                      <div class="space-y-2 md:col-span-2">
+                        <label for="razon" class="block text-sm font-medium text-gray-700">Razón</label>
+                        <div class="relative">
+                          <textarea 
+                            id="razon"
+                            rows="4" 
+                            formControlName="razon"
+                            placeholder="Razón del documento" 
+                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
+                          ></textarea>
+                        </div>
+                      </div>
+                      
+                      <!-- Sexta fila -->
+                      <div class="space-y-2">
+                        <label for="responsable" class="block text-sm font-medium text-gray-700">Responsable</label>
+                        <div class="relative">
+                          <input 
+                            id="responsable"
+                            type="text" 
+                            formControlName="responsable"
+                            placeholder="Nombre del responsable" 
+                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
+                            [ngClass]="{'border-red-300 focus:border-red-500 focus:ring-red-200': formVentanilla.get('responsable')?.invalid && formVentanilla.get('responsable')?.touched}"
+                          >
+                        </div>
+                      </div>
+                      
+                      <div class="space-y-2">
+                        <label for="fechaEntrega" class="block text-sm font-medium text-gray-700">Fecha Entrega a Responsable</label>
+                        <div class="relative">
+                          <input 
+                            id="fechaEntrega"
+                            type="date" 
+                            formControlName="fechaEntrega"
+                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
+                            [ngClass]="{'border-red-300 focus:border-red-500 focus:ring-red-200': formVentanilla.get('fechaEntrega')?.invalid && formVentanilla.get('fechaEntrega')?.touched}"
+                          >
+                        </div>
+                      </div>
+                      
+                      <!-- Séptima fila -->
+                      <div class="space-y-2">
+                        <label for="fechaVencimiento" class="block text-sm font-medium text-gray-700">Fecha Vencimiento</label>
+                        <div class="relative">
+                          <input 
+                            id="fechaVencimiento"
+                            type="date" 
+                            formControlName="fechaVencimiento"
+                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
+                            [ngClass]="{'border-red-300 focus:border-red-500 focus:ring-red-200': formVentanilla.get('fechaVencimiento')?.invalid && formVentanilla.get('fechaVencimiento')?.touched}"
+                          >
+                        </div>
+                      </div>
+                      
+                      <div class="space-y-2">
+                        <label for="fechaSalida" class="block text-sm font-medium text-gray-700">Fecha Salida</label>
+                        <div class="relative">
+                          <input 
+                            id="fechaSalida"
+                            type="date" 
+                            formControlName="fechaSalida"
+                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
+                          >
+                        </div>
+                      </div>
+                      
+                      <!-- Octava fila -->
+                      <div class="space-y-2">
+                        <label for="diasFaltantes" class="block text-sm font-medium text-gray-700">Días Faltantes</label>
+                        <div class="relative">
+                          <input 
+                            id="diasFaltantes"
+                            type="text" 
+                            formControlName="diasFaltantes"
+                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-gray-500 cursor-not-allowed"
+                            readonly
+                          >
+                        </div>
+                      </div>
+                      
+                      <!-- Novena fila -->
+                      <div class="space-y-2">
+                        <label for="cumplimiento" class="block text-sm font-medium text-gray-700">Cumplimiento</label>
+                        <div class="relative">
+                          <select 
+                            id="cumplimiento"
+                            formControlName="cumplimiento"
+                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700 appearance-none"
+                          >
+                            <option value="" disabled selected>Seleccionar cumplimiento</option>
+                            <option value="A tiempo">A tiempo</option>
+                            <option value="Retrasado">Retrasado</option>
+                            <option value="Vencido">Vencido</option>
+                          </select>
+                          <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Botones -->
+                    <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-2 justify-end">
+                      <button 
+                        type="button" 
+                        (click)="cancel()" 
+                        class="px-6 py-2.5 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                      >
+                        Cancelar
+                      </button>
+                      <button 
+                        type="submit" 
+                        class="px-6 py-2.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                      >
+                        Guardar
+                      </button>
+                    </div>
+                  </form>
                 </div>
-            </div>
+              </div>
+              
+              
         </ng-template>
     </ngx-custom-modal>
+
+    <!-- FIN DEL FORMULARIO DE RADICACIÓN DE DOCUMENTOS -->
 
     <ngx-custom-modal #viewTaskModal class="no-footer">
         <ng-template #modalHeader>
@@ -580,9 +662,9 @@
                 <div
                     *ngIf="selectedTask.priority"
                     class="badge rounded-3xl capitalize"
-                    [ngClass]="{'badge-outline-primary': selectedTask.priority === 'medium',
-                                'badge-outline-warning ': selectedTask.priority === 'low',
-                                'badge-outline-danger ': selectedTask.priority === 'high'}"
+                    [ngClass]="{'badge-outline-primary': selectedTask.priority === 'media',
+                                'badge-outline-warning ': selectedTask.priority === 'baja',
+                                'badge-outline-danger ': selectedTask.priority === 'alta'}"
                 >
                     {{ selectedTask.priority }}
                 </div>
