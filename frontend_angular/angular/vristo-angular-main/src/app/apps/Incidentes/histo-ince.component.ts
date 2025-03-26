@@ -1,38 +1,50 @@
+// incidentes.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 interface Incidente {
   id: number;
-  numero: string;
-  fechaRadicacion: Date;
-  tipo: 'Petición' | 'Queja' | 'Reclamo';
-  estado: 'Resuelta' | 'En Proceso' | 'Vencida';
-  diasRestantes: number;
-  asignadoA: string;
-  asignadoIniciales: string;
+  referencia: string;
+  titulo: string;
+  fecha: Date;
+  tipo: string;
+  severidad: 'Bajo' | 'Medio' | 'Alto' | 'Crítico';
+  estado: 'Abierto' | 'En Investigación' | 'En Revisión' | 'Cerrado';
+  responsable: string;
+  departamento: string;
+  prioridad: 'Baja' | 'Media' | 'Alta' | 'Urgente';
 }
 
 @Component({
-  selector: 'app-histo-ince',
+  selector: 'app-incidentes',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './histo-ince.component.html',
+  templateUrl: 'histo-ince.component.html',
 })
-export class HistoInceComponent implements OnInit {
+export class IncidentesComponent implements OnInit {
+  // Datos y Filtros
   incidentesList: Incidente[] = [];
   filteredIncidentes: Incidente[] = [];
   pagedIncidentes: Incidente[] = [];
 
-  fechaInicial?: string;
-  fechaFinal?: string;
+  // Filtros
+  fechaDesde?: string;
+  fechaHasta?: string;
+  estadoFiltro: string = '';
+  tipoFiltro: string = '';
+  severidadFiltro: string = '';
+  departamentoFiltro: string = '';
+  responsableFiltro: string = '';
+  prioridadFiltro: string = '';
   searchText = '';
 
+  // Paginación
   currentPage = 1;
   itemsPerPage = 10;
-  totalPages = 0;
+  totalPages = 1;
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.loadDummyData();
     this.filterIncidentes();
   }
@@ -41,67 +53,93 @@ export class HistoInceComponent implements OnInit {
     this.incidentesList = [
       {
         id: 1,
-        numero: 'Incidencias-2024-001',
-        fechaRadicacion: new Date(2024, 1, 15),
-        tipo: 'Petición',
-        estado: 'En Proceso',
-        diasRestantes: 8,
-        asignadoA: 'Juan Silva',
-        asignadoIniciales: 'JS',
+        referencia: 'INC-2024-001',
+        titulo: 'Caída de andamio',
+        fecha: new Date(2024, 2, 15),
+        tipo: 'Accidente',
+        severidad: 'Crítico',
+        estado: 'En Investigación',
+        responsable: 'Juan Pérez',
+        departamento: 'Operaciones',
+        prioridad: 'Urgente'
       },
       {
         id: 2,
-        numero: 'Incidencias-2024-002',
-        fechaRadicacion: new Date(2024, 1, 14),
-        tipo: 'Queja',
-        estado: 'Resuelta',
-        diasRestantes: 0,
-        asignadoA: 'Ana Martínez',
-        asignadoIniciales: 'AM',
+        referencia: 'INC-2024-002',
+        titulo: 'Fuga química',
+        fecha: new Date(2024, 2, 14),
+        tipo: 'Ambiental',
+        severidad: 'Alto',
+        estado: 'En Revisión',
+        responsable: 'María Rodríguez',
+        departamento: 'Producción',
+        prioridad: 'Alta'
       },
+      // Agrega más datos de prueba aquí
     ];
   }
 
   filterIncidentes() {
-    this.filteredIncidentes = this.incidentesList.filter((inc) => {
-      const fechaIncidente = new Date(inc.fechaRadicacion);
-      const startDate = this.fechaInicial ? new Date(this.fechaInicial) : null;
-      const endDate = this.fechaFinal ? new Date(this.fechaFinal) : null;
+    this.filteredIncidentes = this.incidentesList.filter(incidente => {
+        const fechaIncidente = new Date(incidente.fecha);
+        const startDate = this.fechaDesde ? new Date(this.fechaDesde) : null;
+        const endDate = this.fechaHasta ? new Date(this.fechaHasta) : null;
 
-      const dateInRange =
-        (!startDate || fechaIncidente >= startDate) &&
-        (!endDate || fechaIncidente <= endDate);
-      const matchesSearch =
-        inc.numero.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        inc.asignadoA.toLowerCase().includes(this.searchText.toLowerCase());
+        return (
+          (!startDate || fechaIncidente >= startDate) &&
+          (!endDate || fechaIncidente <= endDate) &&
+          (!this.estadoFiltro || incidente.estado === this.estadoFiltro) &&
+          (!this.tipoFiltro || incidente.tipo === this.tipoFiltro) &&
+          (!this.severidadFiltro || incidente.severidad === this.severidadFiltro) &&
+          (!this.departamentoFiltro || incidente.departamento === this.departamentoFiltro) &&
+          (!this.responsableFiltro || incidente.responsable === this.responsableFiltro) &&
+          (!this.prioridadFiltro || incidente.prioridad === this.prioridadFiltro) &&
+          (incidente.referencia.toLowerCase().includes(this.searchText?.toLowerCase() || '') ||
+           incidente.titulo.toLowerCase().includes(this.searchText?.toLowerCase() || ''))
+        );
+      });
 
-      return dateInRange && matchesSearch;
-    });
-
-    this.totalPages = Math.ceil(this.filteredIncidentes.length / this.itemsPerPage);
-    this.updatePagination();
+      this.totalPages = Math.ceil(this.filteredIncidentes.length / this.itemsPerPage);
+      this.updatePagination();
   }
 
   updatePagination() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    this.pagedIncidentes = this.filteredIncidentes.slice(
-      startIndex,
-      startIndex + this.itemsPerPage
-    );
+    this.pagedIncidentes = this.filteredIncidentes.slice(startIndex, startIndex + this.itemsPerPage);
   }
 
   clearFilters() {
-    this.fechaInicial = undefined;
-    this.fechaFinal = undefined;
+    this.fechaDesde = undefined;
+    this.fechaHasta = undefined;
+    this.estadoFiltro = '';
+    this.tipoFiltro = '';
+    this.severidadFiltro = '';
+    this.departamentoFiltro = '';
+    this.responsableFiltro = '';
+    this.prioridadFiltro = '';
     this.searchText = '';
     this.filterIncidentes();
   }
 
-  searchIncidente(value: string) {
-    this.searchText = value;
-    this.filterIncidentes();
+  // Métodos para resumen estadístico
+  get totalIncidentes(): number {
+    return this.filteredIncidentes.length;
   }
 
+  get enProceso(): number {
+    return this.filteredIncidentes.filter(i =>
+      i.estado === 'En Investigación' || i.estado === 'En Revisión').length;
+  }
+
+  get criticos(): number {
+    return this.filteredIncidentes.filter(i => i.severidad === 'Crítico').length;
+  }
+
+  get resueltos(): number {
+    return this.filteredIncidentes.filter(i => i.estado === 'Cerrado').length;
+  }
+
+  // Métodos de paginación
   previousPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
@@ -124,28 +162,11 @@ export class HistoInceComponent implements OnInit {
   }
 
   deleteIncidente(incidente: Incidente) {
-    this.incidentesList = this.incidentesList.filter((inc) => inc.id !== incidente.id);
+    this.incidentesList = this.incidentesList.filter(i => i.id !== incidente.id);
     this.filterIncidentes();
   }
 
-  get totalIncidentes(): number {
-    return this.filteredIncidentes.length;
-  }
-
-  get resueltas(): number {
-    return this.filteredIncidentes.filter((inc) => inc.estado === 'Resuelta').length;
-  }
-
-  get enProceso(): number {
-    return this.filteredIncidentes.filter((inc) => inc.estado === 'En Proceso').length;
-  }
-
-  get vencidas(): number {
-    return this.filteredIncidentes.filter((inc) => inc.estado === 'Vencida').length;
-  }
-
-  exportIncidentes() {
-    // Implementar lógica de exportación si es necesario
-    console.log('Exportando incidencias...');
+  exportarIncidentes() {
+    // Implementar lógica de exportación
   }
 }

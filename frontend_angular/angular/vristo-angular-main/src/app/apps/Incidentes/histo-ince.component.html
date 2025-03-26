@@ -1,168 +1,142 @@
 <div>
-
     <div class="container mx-auto px-4 py-8">
-        <h1 class="text-2xl font-bold mb-6">Seguimiento de Incidentes</h1>
-
-        <!-- Filtros de Fecha -->
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                Fecha Inicial
-              </label>
-              <input
-                type="date"
-                [(ngModel)]="fechaInicial"
-                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-                (change)="filterIncidentes()"
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                Fecha Final
-              </label>
-              <input
-                type="date"
-                [(ngModel)]="fechaFinal"
-                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-                (change)="filterIncidentes()"
-              />
-            </div>
-            <div class="flex items-end">
-              <button
-                (click)="clearFilters()"
-                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
-              >
-                <i class="fas fa-times mr-2"></i>
-                Limpiar Filtros
-              </button>
-            </div>
-          </div>
-
-          <!-- Resumen de Incidencias -->
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
-            <div class="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-4">
-              <div class="flex items-center">
-                <div class="rounded-full bg-blue-500/20 p-3">
-                  <i class="fas fa-clipboard-list text-blue-500"></i>
-                </div>
-                <div class="ml-4">
-                  <p class="text-sm text-blue-600 dark:text-blue-400">Total Incidencias</p>
-                  <p class="text-2xl font-semibold text-blue-700 dark:text-blue-300">
-                    {{ totalIncidentes }}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="bg-green-50 dark:bg-green-900/30 rounded-lg p-4">
-              <div class="flex items-center">
-                <div class="rounded-full bg-green-500/20 p-3">
-                  <i class="fas fa-check text-green-500"></i>
-                </div>
-                <div class="ml-4">
-                  <p class="text-sm text-green-600 dark:text-green-400">Resueltas</p>
-                  <p class="text-2xl font-semibold text-green-700 dark:text-green-300">
-                    {{ resueltas }}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="bg-yellow-50 dark:bg-yellow-900/30 rounded-lg p-4">
-              <div class="flex items-center">
-                <div class="rounded-full bg-yellow-500/20 p-3">
-                  <i class="fas fa-clock text-yellow-500"></i>
-                </div>
-                <div class="ml-4">
-                  <p class="text-sm text-yellow-600 dark:text-yellow-400">En Proceso</p>
-                  <p class="text-2xl font-semibold text-yellow-700 dark:text-yellow-300">
-                    {{ enProceso }}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="bg-red-50 dark:bg-red-900/30 rounded-lg p-4">
-              <div class="flex items-center">
-                <div class="rounded-full bg-red-500/20 p-3">
-                  <i class="fas fa-exclamation-circle text-red-500"></i>
-                </div>
-                <div class="ml-4">
-                  <p class="text-sm text-red-600 dark:text-red-400">Vencidas</p>
-                  <p class="text-2xl font-semibold text-red-700 dark:text-red-300">
-                    {{ vencidas }}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tabla de Incidencias -->
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-          <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
-            <h2 class="text-lg font-semibold">Incidencias encontradas</h2>
+        <!-- Título y botones -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+            <h1 class="text-2xl font-bold">Historial de Incidentes</h1>
             <div class="flex items-center space-x-2">
-              <input
-                type="text"
-                placeholder="Buscar incidencia..."
-                [(ngModel)]="searchText"
-                class="w-64 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-                (keyup)="filterIncidentes()"
-              />
-              <button
-                (click)="exportIncidentes()"
-                class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-md"
-              >
-                <i class="fas fa-download mr-2"></i>
-                Exportar
-              </button>
+                <button onclick="toggleDarkMode()" class="p-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+                <button onclick="window.location.href='formulario-incidentes.html'" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-md flex items-center">
+                    <i class="fas fa-plus mr-2"></i>
+                    Nuevo Incidente
+                </button>
             </div>
-          </div>
-
-          <div class="overflow-x-auto">
-            <table class="w-full">
-              <thead>
-                <tr>
-                  <th>Número</th>
-                  <th>Fecha Radicación</th>
-                  <th>Tipo</th>
-                  <th>Estado</th>
-                  <th>Días Restantes</th>
-                  <th>Asignado a</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let incidente of pagedIncidentes">
-                  <td>{{ incidente.numero }}</td>
-                  <td>{{ incidente.fechaRadicacion | date: 'dd/MM/yyyy' }}</td>
-                  <td>{{ incidente.tipo }}</td>
-                  <td>{{ incidente.estado }}</td>
-                  <td>{{ incidente.diasRestantes }}</td>
-                  <td>{{ incidente.asignadoA }}</td>
-                  <td>
-                    <button (click)="deleteIncidente(incidente)">
-                      <i class="fas fa-trash text-red-500"></i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Paginación -->
-          <div>
-            <button (click)="previousPage()" [disabled]="currentPage === 1">Anterior</button>
-            <button *ngFor="let page of [].constructor(totalPages); let i = index"
-              (click)="goToPage(i + 1)"
-              [class.active]="i + 1 === currentPage"
-            >
-              {{ i + 1 }}
-            </button>
-            <button (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
-          </div>
         </div>
-      </div>
+
+        <!-- Filtros -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold">
+                    <i class="fas fa-filter mr-2 text-primary"></i>
+                    Filtros
+                </h2>
+                <button
+                    id="toggleFiltros"
+                    class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                    onclick="toggleFiltrosAvanzados()"
+                >
+                    <i class="fas fa-chevron-down" id="iconoFiltros"></i>
+                </button>
+            </div>
+
+            <!-- Filtros Básicos -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Fecha Desde</label>
+                    <input
+                        type="date"
+                        id="fechaDesde"
+                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                        onchange="aplicarFiltros()"
+                    >
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Fecha Hasta</label>
+                    <input
+                        type="date"
+                        id="fechaHasta"
+                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                        onchange="aplicarFiltros()"
+                    >
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Estado</label>
+                    <select
+                        id="estado"
+                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                        onchange="aplicarFiltros()"
+                    >
+                        <option value="">Todos</option>
+                        <option value="abierto">Abierto</option>
+                        <option value="en_investigacion">En Investigación</option>
+                        <option value="en_revision">En Revisión</option>
+                        <option value="cerrado">Cerrado</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Filtros Avanzados -->
+            <div id="filtrosAvanzados" class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 hidden">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Tipo de Incidente</label>
+                    <select
+                        id="tipoIncidente"
+                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                        onchange="aplicarFiltros()"
+                    >
+                        <option value="">Todos</option>
+                        <option value="accidente">Accidente</option>
+                        <option value="casi_accidente">Casi Accidente</option>
+                        <option value="enfermedad">Enfermedad</option>
+                        <option value="ambiental">Ambiental</option>
+                        <option value="seguridad">Seguridad</option>
+                        <option value="calidad">Calidad</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Botón para limpiar filtros -->
+            <div class="flex justify-end mt-4">
+                <button
+                    onclick="limpiarFiltros()"
+                    class="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
+                >
+                    <i class="fas fa-times mr-2"></i>
+                    Limpiar Filtros
+                </button>
+            </div>
+        </div>
+
+        <!-- Tabla de Incidentes -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+            <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                <h2 class="text-lg font-semibold">Incidentes Registrados</h2>
+                <div class="flex items-center space-x-2">
+                    <input
+                        type="text"
+                        placeholder="Buscar incidente..."
+                        class="w-64 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                        onkeyup="buscarIncidente(this.value)"
+                    >
+                    <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-md">
+                        <i class="fas fa-download mr-2"></i>
+                        Exportar
+                    </button>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50 dark:bg-gray-700">
+                        <tr>
+                            <th class="px-4 py-3 text-left">Referencia</th>
+                            <th class="px-4 py-3 text-left">Título</th>
+                            <th class="px-4 py-3 text-left">Fecha</th>
+                            <th class="px-4 py-3 text-left">Tipo</th>
+                            <th class="px-4 py-3 text-left">Severidad</th>
+                            <th class="px-4 py-3 text-left">Estado</th>
+                            <th class="px-4 py-3 text-left">Responsable</th>
+                            <th class="px-4 py-3 text-right">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí puedes agregar los datos dinámicos -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

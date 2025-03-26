@@ -1,0 +1,45 @@
+.modal .modal-dialog {
+    max-width: 65rem;
+}
+
+
+/* Estilos adicionales específicos del componente */
+:host {
+    display: block;
+  }
+  
+  /* Animación sutil para los inputs al enfocar */
+  input:focus,
+  select:focus,
+  textarea:focus {
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+  }
+  
+  /* Estilo para los inputs inválidos */
+  .ng-invalid.ng-touched {
+    @apply border-red-300;
+  }
+  
+  /* Estilo para los selects */
+  select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+  }
+  
+  /* Mejora de accesibilidad para focus */
+  *:focus {
+    outline: 2px solid transparent;
+  }
+  
+  /* Transición suave para todos los elementos interactivos */
+  button,
+  input,
+  select,
+  textarea {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  

@@ -10,7 +10,7 @@ ngx-custom-modal .modal {
 }
 
 .modal .modal-dialog {
-    @apply my-auto w-full max-w-lg overflow-hidden rounded-lg;
+    @apply my-auto w-full max-w-5xl overflow-hidden rounded-lg;
 }
 
 .modal .modal-content {
