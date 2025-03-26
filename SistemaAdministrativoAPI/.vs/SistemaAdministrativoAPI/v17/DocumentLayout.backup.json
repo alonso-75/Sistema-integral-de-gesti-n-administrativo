@@ -1,0 +1,139 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|c:\\users\\a01tijma.americashg\\documents\\joel\\alonso proyecto\\sistema-integral-de-gesti-n-administrativo\\sistemaadministrativoapi\\sistemaadministrativoapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|solutionrelative:sistemaadministrativoapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|c:\\users\\a01tijma.americashg\\documents\\joel\\alonso proyecto\\sistema-integral-de-gesti-n-administrativo\\sistemaadministrativoapi\\sistemaadministrativoapi\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|solutionrelative:sistemaadministrativoapi\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|c:\\users\\a01tijma.americashg\\documents\\joel\\alonso proyecto\\sistema-integral-de-gesti-n-administrativo\\sistemaadministrativoapi\\sistemaadministrativoapi\\controllers\\atencion ciudadano\\atencionciudadanocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|solutionrelative:sistemaadministrativoapi\\controllers\\atencion ciudadano\\atencionciudadanocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|c:\\users\\a01tijma.americashg\\documents\\joel\\alonso proyecto\\sistema-integral-de-gesti-n-administrativo\\sistemaadministrativoapi\\sistemaadministrativoapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|solutionrelative:sistemaadministrativoapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|c:\\users\\a01tijma.americashg\\documents\\joel\\alonso proyecto\\sistema-integral-de-gesti-n-administrativo\\sistemaadministrativoapi\\sistemaadministrativoapi\\models\\atencion ciudadano\\atencion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|solutionrelative:sistemaadministrativoapi\\models\\atencion ciudadano\\atencion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|c:\\users\\a01tijma.americashg\\documents\\joel\\alonso proyecto\\sistema-integral-de-gesti-n-administrativo\\sistemaadministrativoapi\\sistemaadministrativoapi\\models\\prestamos\\prestamos-equipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|solutionrelative:sistemaadministrativoapi\\models\\prestamos\\prestamos-equipos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|c:\\users\\a01tijma.americashg\\documents\\joel\\alonso proyecto\\sistema-integral-de-gesti-n-administrativo\\sistemaadministrativoapi\\sistemaadministrativoapi\\models\\atencion ciudadano\\ciudadano.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|solutionrelative:sistemaadministrativoapi\\models\\atencion ciudadano\\ciudadano.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Program.cs",
+              "RelativeDocumentMoniker": "SistemaAdministrativoAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Program.cs",
+              "RelativeToolTip": "SistemaAdministrativoAPI\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T21:44:52.116Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "SistemaAdministrativoAPI\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "SistemaAdministrativoAPI\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T21:34:28.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AtencionCiudadanoController.cs",
+              "DocumentMoniker": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Controllers\\Atencion Ciudadano\\AtencionCiudadanoController.cs",
+              "RelativeDocumentMoniker": "SistemaAdministrativoAPI\\Controllers\\Atencion Ciudadano\\AtencionCiudadanoController.cs",
+              "ToolTip": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Controllers\\Atencion Ciudadano\\AtencionCiudadanoController.cs",
+              "RelativeToolTip": "SistemaAdministrativoAPI\\Controllers\\Atencion Ciudadano\\AtencionCiudadanoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T21:33:24.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Prestamos-equipos.cs",
+              "DocumentMoniker": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Models\\Prestamos\\Prestamos-equipos.cs",
+              "RelativeDocumentMoniker": "SistemaAdministrativoAPI\\Models\\Prestamos\\Prestamos-equipos.cs",
+              "ToolTip": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Models\\Prestamos\\Prestamos-equipos.cs",
+              "RelativeToolTip": "SistemaAdministrativoAPI\\Models\\Prestamos\\Prestamos-equipos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T21:11:15.97Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Atencion.cs",
+              "DocumentMoniker": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Models\\Atencion Ciudadano\\Atencion.cs",
+              "RelativeDocumentMoniker": "SistemaAdministrativoAPI\\Models\\Atencion Ciudadano\\Atencion.cs",
+              "ToolTip": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Models\\Atencion Ciudadano\\Atencion.cs",
+              "RelativeToolTip": "SistemaAdministrativoAPI\\Models\\Atencion Ciudadano\\Atencion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T21:11:13.765Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "SistemaAdministrativoAPI\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "SistemaAdministrativoAPI\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T21:08:36.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Ciudadano.cs",
+              "DocumentMoniker": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Models\\Atencion Ciudadano\\Ciudadano.cs",
+              "RelativeDocumentMoniker": "SistemaAdministrativoAPI\\Models\\Atencion Ciudadano\\Ciudadano.cs",
+              "ToolTip": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Models\\Atencion Ciudadano\\Ciudadano.cs",
+              "RelativeToolTip": "SistemaAdministrativoAPI\\Models\\Atencion Ciudadano\\Ciudadano.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T21:07:35.242Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "XNoISn1IjInk4STCtSn5YBIRbv7HqqPZlHkfB1CAwyQ=",
+  "Source": "SistemaAdministrativoAPI",
+  "BasePath": "_content/SistemaAdministrativoAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

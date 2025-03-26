@@ -1,6 +1,0 @@
-@sistema_integral_api_HostAddress = http://localhost:5096
-
-GET {{sistema_integral_api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
