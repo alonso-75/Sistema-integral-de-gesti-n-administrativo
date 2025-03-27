@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaAdministrativoAPI.Data;
 
@@ -11,9 +12,11 @@ using SistemaAdministrativoAPI.Data;
 namespace SistemaAdministrativoAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250327192942_version2")]
+    partial class version2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -221,11 +224,13 @@ namespace SistemaAdministrativoAPI.Migrations
 
             modelBuilder.Entity("SistemaAdministrativoAPI.Models.Atencion_Ciudadano.Atencion", b =>
                 {
-                    b.HasOne("SistemaAdministrativoAPI.Models.Atencion_Ciudadano.Ciudadano", null)
+                    b.HasOne("SistemaAdministrativoAPI.Models.Atencion_Ciudadano.Ciudadano", "Ciudadano")
                         .WithMany("Atenciones")
                         .HasForeignKey("CiudadanoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Ciudadano");
                 });
 
             modelBuilder.Entity("SistemaAdministrativoAPI.Models.Prestamos.Prestamos_equipos", b =>

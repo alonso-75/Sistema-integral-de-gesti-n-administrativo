@@ -33,11 +33,11 @@ namespace SistemaAdministrativoAPI.Data
             //    .HasCheckConstraint("CHK_TipoAtencion", "TipoAtencion IN ('Consulta', 'Seguimiento', 'Otro')");
 
             // Relación entre Usuario y Atencion
-            modelBuilder.Entity<Atencion>()
-                .HasOne(a => a.Ciudadano)
-                .WithMany(u => u.Atenciones)
-                .HasForeignKey(a => a.CiudadanoId)
-                .OnDelete(DeleteBehavior.Restrict); // No permitir eliminar Usuario si tiene Atenciones
+            //modelBuilder.Entity<Atencion>()
+            //    .HasOne(a => a.Ciudadano)
+            //    .WithMany(u => u.Atenciones)
+            //    .HasForeignKey(a => a.CiudadanoId)
+            //    .OnDelete(DeleteBehavior.Restrict); // No permitir eliminar Usuario si tiene Atenciones
         }
     }
 }

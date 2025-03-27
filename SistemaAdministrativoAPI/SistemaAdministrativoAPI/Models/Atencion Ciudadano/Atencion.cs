@@ -11,9 +11,6 @@ namespace SistemaAdministrativoAPI.Models.Atencion_Ciudadano
         [Required]
         public int CiudadanoId { get; set; }
 
-        [ForeignKey("CiudadanoId")]
-        public Ciudadano? Ciudadano { get; set; }
-
         [Required, MaxLength(100)]
         public string? TipoAtencion { get; set; }
 

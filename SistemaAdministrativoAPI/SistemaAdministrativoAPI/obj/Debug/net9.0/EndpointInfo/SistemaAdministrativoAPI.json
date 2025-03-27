@@ -291,9 +291,6 @@
             "type": "integer",
             "format": "int32"
           },
-          "ciudadano": {
-            "$ref": "#/components/schemas/Ciudadano"
-          },
           "tipoAtencion": {
             "maxLength": 100,
             "minLength": 1,

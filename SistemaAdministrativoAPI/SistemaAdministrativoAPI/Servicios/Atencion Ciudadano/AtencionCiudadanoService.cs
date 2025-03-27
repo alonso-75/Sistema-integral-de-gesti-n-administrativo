@@ -32,9 +32,30 @@ namespace SistemaAdministrativoAPI.Servicios.Atencion_Ciudadano
 
         public async Task<Ciudadano> CreateUsuarioAsync(Ciudadano ciudadano)
         {
-            _context.Ciudadanos.Add(ciudadano);
-            await _context.SaveChangesAsync();
-            return ciudadano;
+            // Verificar si el ciudadano ya existe por su documento
+            var existingCiudadano = await _context.Ciudadanos
+                .Include(c => c.Atenciones)
+                .FirstOrDefaultAsync(c => c.NumeroDocumento == ciudadano.NumeroDocumento);
+
+            if (existingCiudadano != null)
+            {
+                // Agregar nuevas atenciones al ciudadano existente
+                foreach (var atencion in ciudadano.Atenciones)
+                {
+                    atencion.CiudadanoId = existingCiudadano.Id;
+                    existingCiudadano.Atenciones.Add(atencion);
+                }
+
+                await _context.SaveChangesAsync();
+                return existingCiudadano;
+            }
+            else
+            {
+                // Crear un nuevo ciudadano con sus atenciones
+                _context.Ciudadanos.Add(ciudadano);
+                await _context.SaveChangesAsync();
+                return ciudadano;
+            }
         }
 
         public async Task<bool> UpdateUsuarioAsync(int id, Ciudadano ciudadano)
