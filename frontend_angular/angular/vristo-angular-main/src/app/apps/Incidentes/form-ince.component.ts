@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FlatpickrDefaultsInterface } from 'angularx-flatpickr';
 
 @Component({
   selector: 'app-form-ince',
-  standalone: true,
-  imports: [],
   templateUrl: './form-ince.component.html',
 })
 export class FormInceComponent implements OnInit {
+
+  basic: FlatpickrDefaultsInterface;
   incidenteForm: FormGroup;
   referenciaGenerada: string = '';
 
@@ -17,7 +18,14 @@ export class FormInceComponent implements OnInit {
       tipo: ['', Validators.required],
       referencia: [{ value: '', disabled: true }],
     });
+
+    this.basic = {
+        dateFormat: 'Y-m-d',
+        // position: this.store.rtlClass === 'rtl' ? 'auto right' : 'auto left',
+        monthSelectorType: 'dropdown',
+    };
   }
+
 
   ngOnInit(): void {
     this.generarReferencia();

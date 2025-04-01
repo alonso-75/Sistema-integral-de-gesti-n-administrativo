@@ -1,4 +1,11 @@
 <div>
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-6 sm:p-8">
+        <div class="flex justify-between items-center">
+          <img src="/assets/images/logos/bandera-logo.png" alt="Logo" class=" h-16" />
+        </div>
+      </div>
+
     <div class="container mx-auto px-4 py-8">
         <!-- Título y botones -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
@@ -33,24 +40,21 @@
 
             <!-- Filtros Básicos -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Fecha Desde</label>
-                    <input
-                        type="date"
-                        id="fechaDesde"
-                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-                        onchange="aplicarFiltros()"
-                    >
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Fecha Hasta</label>
-                    <input
-                        type="date"
-                        id="fechaHasta"
-                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-                        onchange="aplicarFiltros()"
-                    >
-                </div>
+                <div class="mb-5">
+                    <label for="hora" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" >
+                        Fecha Desde <span class="text-red-500">*</span>
+                    </label>
+                    <input type="text" mwlFlatpickr formControlName="date1" [options]="basic" class="form-input" />
+
+            </div>
+
+            <div class="mb-5">
+                <label for="hora" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" >
+                    Fecha hasta <span class="text-red-500">*</span>
+                </label>
+                <input type="text" mwlFlatpickr formControlName="date1" [options]="basic" class="form-input" />
+
+             </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Estado</label>
                     <select
@@ -88,7 +92,7 @@
                 </div>
             </div>
 
-            <!-- Botón para limpiar filtros -->
+            <!-- Botónes para buscar y limpar filtros -->
             <div class="flex justify-end mt-4">
                 <button
                     onclick="limpiarFiltros()"
@@ -96,6 +100,13 @@
                 >
                     <i class="fas fa-times mr-2"></i>
                     Limpiar Filtros
+                </button>
+            </div>
+
+            <div class="flex justify-end mt-4">
+                <button class="px-4 py-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-md flex justify-between">
+                    <i class="fas fa-times mr-2"></i>
+                    Buscar
                 </button>
             </div>
         </div>

@@ -69,6 +69,8 @@ const routes: Routes = [
         GestionarInsumosComponent,
         FormularioInconvenientesComponent,
         listPqrsComponent,
+        FormInceComponent,
+        IncidentesComponent
 
     ],
 })
