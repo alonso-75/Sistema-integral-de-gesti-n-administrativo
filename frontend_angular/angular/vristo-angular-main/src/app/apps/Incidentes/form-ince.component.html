@@ -48,7 +48,7 @@
                                 id="referencia"
                                 name="referencia"
                                 placeholder="INC-2024-001"
-                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white bg-gray-100 dark:bg-gray-600"
+                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white bg-gray-100"
                                 readonly
                             >
                         </div>
@@ -165,22 +165,7 @@
                             </select>
                         </div>
 
-                        <div>
-                            <label for="estado" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                Estado <span class="text-red-500">*</span>
-                            </label>
-                            <select
-                                id="estado"
-                                name="estado"
-                                required
-                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-                            >
-                                <option value="abierto">Abierto</option>
-                                <option value="en_investigacion">En Investigación</option>
-                                <option value="en_revision">En Revisión</option>
-                                <option value="cerrado">Cerrado</option>
-                            </select>
-                        </div>
+                        
                     </div>
                 </div>
 
@@ -230,114 +215,6 @@
                                 placeholder="Nombres de los testigos del incidente"
                                 class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
                             ></textarea>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sección: Impacto y Acciones -->
-                <div class="mb-6">
-                    <h2 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
-                        <i class="fas fa-exclamation-triangle mr-2 text-primary"></i>
-                        Impacto y Acciones
-                    </h2>
-
-                    <div class="mb-4">
-                        <label for="impacto" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                            Impacto (Daños, Lesiones, etc.)
-                        </label>
-                        <textarea
-                            id="impacto"
-                            name="impacto"
-                            rows="3"
-                            placeholder="Describa los daños, lesiones o impactos causados por el incidente"
-                            class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-                        ></textarea>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label for="acciones_inmediatas" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                Acciones Inmediatas Tomadas
-                            </label>
-                            <textarea
-                                id="acciones_inmediatas"
-                                name="acciones_inmediatas"
-                                rows="3"
-                                placeholder="Describa las acciones inmediatas que se tomaron para mitigar el incidente"
-                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-                            ></textarea>
-                        </div>
-
-                        <div>
-                            <label for="acciones_correctivas" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                Acciones Correctivas Propuestas
-                            </label>
-                            <textarea
-                                id="acciones_correctivas"
-                                name="acciones_correctivas"
-                                rows="3"
-                                placeholder="Describa las acciones correctivas propuestas para evitar que el incidente se repita"
-                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-                            ></textarea>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sección: Seguimiento -->
-                <div class="mb-6">
-                    <h2 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-200 dark:border-gray-700">
-                        <i class="fas fa-user-check mr-2 text-primary"></i>
-                        Seguimiento
-                    </h2>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div>
-                            <label for="responsable" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                Responsable de Seguimiento <span class="text-red-500">*</span>
-                            </label>
-                            <select
-                                id="responsable"
-                                name="responsable"
-                                required
-                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-                            >
-                                <option value="">Seleccione un responsable</option>
-                                <option value="juan_perez">Juan Pérez</option>
-                                <option value="maria_rodriguez">María Rodríguez</option>
-                                <option value="carlos_gomez">Carlos Gómez</option>
-                                <option value="ana_martinez">Ana Martínez</option>
-                                <option value="luis_sanchez">Luis Sánchez</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label for="fecha_limite" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                Fecha Límite de Resolución
-                            </label>
-                            <input
-                                type="date"
-                                id="fecha_limite"
-                                name="fecha_limite"
-                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-                            >
-                        </div>
-
-                        <div>
-                            <label for="prioridad" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                Prioridad <span class="text-red-500">*</span>
-                            </label>
-                            <select
-                                id="prioridad"
-                                name="prioridad"
-                                required
-                                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-                            >
-                                <option value="">Seleccione una prioridad</option>
-                                <option value="baja">Baja</option>
-                                <option value="media">Media</option>
-                                <option value="alta">Alta</option>
-                                <option value="urgente">Urgente</option>
-                            </select>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SistemaAdministrativoAPI.Models.Atencion_Ciudadano;
+using SistemaAdministrativoAPI.Models.Incidencias;
 using SistemaAdministrativoAPI.Models.Prestamos;
 
 namespace SistemaAdministrativoAPI.Data
@@ -12,6 +13,9 @@ namespace SistemaAdministrativoAPI.Data
         public DbSet<Atencion> Atenciones { get; set; }
         public DbSet<Prestamos_equipos> PrestamosEquipos { get; set; }
         public DbSet<Equipos> Equipos { get; set; }
+        public DbSet<Incidencia> Incidencias { get; set; }
+        public DbSet<Evidencia> Evidencias { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using SistemaAdministrativoAPI.Data;
 using SistemaAdministrativoAPI.Servicios.Atencion_Ciudadano;
+using SistemaAdministrativoAPI.Servicios.Prestamo_de_Equipos;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,11 +18,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Registrar el servicio de atención al ciudadano
 builder.Services.AddScoped<AtencionCiudadanoService>();
+builder.Services.AddScoped<PrestamoService>();
+builder.Services.AddScoped<EquiposService>();
 
 
-// Agregar Entity Framework Core con SQL Server
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
