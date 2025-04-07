@@ -70,7 +70,9 @@ const routes: Routes = [
         FormularioInconvenientesComponent,
         listPqrsComponent,
         FormInceComponent,
-        IncidentesComponent
+        IncidentesComponent,
+        SeguiPqrsComponent
+
 
     ],
 })

@@ -3,15 +3,28 @@ import { toggleAnimation } from 'src/app/shared/animations';
 import Swal from 'sweetalert2';
 import { NgxCustomModalComponent } from 'ngx-custom-modal';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FlatpickrDefaultsInterface } from 'angularx-flatpickr';
 @Component({
     templateUrl: './list-pqrs.html',
     animations: [toggleAnimation],
     styleUrls: ['./list-pqrs.css'],
 })
 export class listPqrsComponent {
+    basic: FlatpickrDefaultsInterface;
     formVentanilla: FormGroup
-  today = new Date().toISOString().split("T")[0]
-    constructor(public fb: FormBuilder) {}
+    today = new Date().toISOString().split("T")[0]
+    constructor(public fb: FormBuilder) {
+
+        this.formVentanilla = this.fb.group({
+            date1: ['2022-07-05'],
+        });
+
+        this.basic = {
+            dateFormat: 'Y-m-d',
+            //position: this.store.rtlClass === 'rtl' ? 'auto right' : 'auto left',
+            monthSelectorType: 'dropdown',
+        };
+    }
     @ViewChild('addTaskModal') addTaskModal!: NgxCustomModalComponent;
     @ViewChild('viewTaskModal') viewTaskModal!: NgxCustomModalComponent;
     defaultParams = {
@@ -408,7 +421,12 @@ export class listPqrsComponent {
       }
 
     cancel() {
-        this.formVentanilla.reset()
+        this.formVentanilla.reset();
         // Add any additional cancel logic here
       }
+
+    cancelAndclose(){
+        this.formVentanilla.reset();
+        this.addTaskModal.close();
+    }
 }

@@ -10,23 +10,13 @@
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         Fecha Inicial
                     </label>
-                    <input
-                        type="date"
-                        id="fechaInicial"
-                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-                        onchange="filtrarPorFecha()"
-                    >
+                    <input type="text" mwlFlatpickr formControlName="date1" [options]="basic" class="form-input" />
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         Fecha Final
                     </label>
-                    <input
-                        type="date"
-                        id="fechaFinal"
-                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-                        onchange="filtrarPorFecha()"
-                    >
+                    <input type="text" mwlFlatpickr formControlName="date1" [options]="basic" class="form-input" />
                 </div>
                 <div class="flex items-end">
                     <button
@@ -36,6 +26,12 @@
                         <i class="fas fa-times mr-2"></i>
                         Limpiar Filtros
                     </button>
+
+                    <button>
+                        <i class="fas flex-auto">
+
+                        </i>
+                    </button>
                 </div>
             </div>
 
@@ -43,6 +39,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
                 <div class="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-4">
                     <div class="flex items-center">
+
                         <div class="rounded-full bg-blue-500/20 p-3">
                             <i class="fas fa-clipboard-list text-blue-500"></i>
                         </div>

@@ -97,29 +97,13 @@
                   </select>
                   <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Genero', 'required') }}</p>
                 </div>
-                <div x-data="datePicker5">
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Fecha de nacimiento</label>
-                    <input id="basic" x-model="date5" class="form-input" />
+                <div class="mb-5">
+                    <label for="hora" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" >
+                        Fecha de nacimiento
+                    </label>
+                    <input type="text" mwlFlatpickr formControlName="date1" [options]="basic" class="form-input" />
 
-                    <script>
-                        document.addEventListener("alpine:init", () => {
-                            Alpine.data("datePicker5", () => ({
-                                date1: '2022-07-05',
-                                init() {
-                                    flatpickr(document.getElementById('basic'), {
-                                        dateFormat: 'Y-m-d',
-                                        defaultDate: this.date5,
-                                        onChange: (selectedDates, dateStr) => {
-                                            this.date5 = dateStr;
-                                        }
-                                    });
-                                }
-                            }));
-                        });
-                    </script>
-                    >
-                  <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Fechadenacimiento', 'required') }}</p>
-                </div>
+            </div>
                 <div>
                   <label for="pertenenciaetnica" class="block text-sm font-medium text-gray-700 mb-1">Pertenencia Étnica</label>
                   <select id="pertenenciaetnica" formControlName="pertenenciaetnica" class="form-select block w-full">

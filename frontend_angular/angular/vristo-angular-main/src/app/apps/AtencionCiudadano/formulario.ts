@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { FlatpickrDefaultsInterface } from 'angularx-flatpickr';
 @Component({
     templateUrl: './formulario.html',
     styleUrls: ["./formulario.css"],
 })
-export class FormularioComponent {
+export class FormularioComponent implements OnInit {
+
     form: FormGroup;
     currentStep = 0;
     options = ['Orange', 'White', 'Purple'];
@@ -18,7 +19,20 @@ export class FormularioComponent {
         { label: 'Confirmación', controlName: 'confirmation' },
     ];
 
-    constructor(private fb: FormBuilder) {}
+    basic: FlatpickrDefaultsInterface;
+    Histoindicidente!: FormGroup;
+    constructor(private fb: FormBuilder) {
+
+        this.Histoindicidente = this.fb.group({
+            date1: ['2022-07-05'],
+        });
+
+        this.basic = {
+            dateFormat: 'Y-m-d',
+            //position: this.store.rtlClass === 'rtl' ? 'auto right' : 'auto left',
+            monthSelectorType: 'dropdown',
+        };
+    }
 
     ngOnInit() {
         this.form = this.fb.group({

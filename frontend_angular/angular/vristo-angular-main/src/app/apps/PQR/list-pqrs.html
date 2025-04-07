@@ -400,58 +400,52 @@
         <ng-template #modalBody>
             <div class="max-w-5xl mx-auto p-6 bg-white rounded-xl shadow-sm">
                 <h1 class="text-2xl font-bold text-center mb-6 text-gray-800">Formulario de Ventanilla Única</h1>
-                
+
                 <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
                   <form [formGroup]="formVentanilla" (ngSubmit)="onSubmit()">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      
+
                       <!-- Primera fila -->
                       <div class="space-y-2">
                         <label for="radicacion" class="block text-sm font-medium text-gray-700">Radicación</label>
                         <div class="relative">
-                          <input 
+                          <input
                             id="radicacion"
-                            type="text" 
+                            type="text"
                             formControlName="radicacion"
-                            placeholder="Número de radicación" 
+                            placeholder="Número de radicación"
                             class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
                             [ngClass]="{'border-red-300 focus:border-red-500 focus:ring-red-200': formVentanilla.get('radicacion')?.invalid && formVentanilla.get('radicacion')?.touched}"
                           >
                         </div>
                       </div>
-                      
+
                       <div class="space-y-2">
                         <label for="fechaRecibo" class="block text-sm font-medium text-gray-700">Fecha de Recibo</label>
                         <div class="relative">
-                          <input 
-                            id="fechaRecibo"
-                            type="date" 
-                            formControlName="fechaRecibo"
-                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
-                            [ngClass]="{'border-red-300 focus:border-red-500 focus:ring-red-200': formVentanilla.get('fechaRecibo')?.invalid && formVentanilla.get('fechaRecibo')?.touched}"
-                          >
+                            <input type="text" mwlFlatpickr formControlName="date1" [options]="basic" class="form-input" />
                         </div>
                       </div>
-                      
+
                       <!-- Segunda fila -->
                       <div class="space-y-2">
                         <label for="remitente" class="block text-sm font-medium text-gray-700">Remitente</label>
                         <div class="relative">
-                          <input 
+                          <input
                             id="remitente"
-                            type="text" 
+                            type="text"
                             formControlName="remitente"
-                            placeholder="Nombre del remitente" 
+                            placeholder="Nombre del remitente"
                             class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
                             [ngClass]="{'border-red-300 focus:border-red-500 focus:ring-red-200': formVentanilla.get('remitente')?.invalid && formVentanilla.get('remitente')?.touched}"
                           >
                         </div>
                       </div>
-                      
+
                       <div class="space-y-2">
                         <label for="tipoSolicitud" class="block text-sm font-medium text-gray-700">Tipo de Solicitud</label>
                         <div class="relative">
-                          <select 
+                          <select
                             id="tipoSolicitud"
                             formControlName="tipoSolicitud"
                             class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700 appearance-none"
@@ -470,41 +464,41 @@
                           </div>
                         </div>
                       </div>
-                      
+
                       <!-- Tercera fila -->
                       <div class="space-y-2 md:col-span-2">
                         <label for="asunto" class="block text-sm font-medium text-gray-700">Asunto</label>
                         <div class="relative">
-                          <input 
+                          <input
                             id="asunto"
-                            type="text" 
+                            type="text"
                             formControlName="asunto"
-                            placeholder="Asunto del documento" 
+                            placeholder="Asunto del documento"
                             class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
                             [ngClass]="{'border-red-300 focus:border-red-500 focus:ring-red-200': formVentanilla.get('asunto')?.invalid && formVentanilla.get('asunto')?.touched}"
                           >
                         </div>
                       </div>
-                      
+
                       <!-- Cuarta fila -->
                       <div class="space-y-2">
                         <label for="folios" class="block text-sm font-medium text-gray-700">Folios</label>
                         <div class="relative">
-                          <input 
+                          <input
                             id="folios"
-                            type="number" 
+                            type="number"
                             formControlName="folios"
-                            placeholder="Número de folios" 
+                            placeholder="Número de folios"
                             class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
                             [ngClass]="{'border-red-300 focus:border-red-500 focus:ring-red-200': formVentanilla.get('folios')?.invalid && formVentanilla.get('folios')?.touched}"
                           >
                         </div>
                       </div>
-                      
+
                       <div class="space-y-2">
                         <label for="recibido" class="block text-sm font-medium text-gray-700">Recibido</label>
                         <div class="relative">
-                          <select 
+                          <select
                             id="recibido"
                             formControlName="recibido"
                             class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700 appearance-none"
@@ -523,94 +517,77 @@
                           </div>
                         </div>
                       </div>
-                      
+
                       <!-- Quinta fila -->
                       <div class="space-y-2 md:col-span-2">
                         <label for="razon" class="block text-sm font-medium text-gray-700">Razón</label>
                         <div class="relative">
-                          <textarea 
+                          <textarea
                             id="razon"
-                            rows="4" 
+                            rows="4"
                             formControlName="razon"
-                            placeholder="Razón del documento" 
+                            placeholder="Razón del documento"
                             class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
                           ></textarea>
                         </div>
                       </div>
-                      
+
                       <!-- Sexta fila -->
                       <div class="space-y-2">
                         <label for="responsable" class="block text-sm font-medium text-gray-700">Responsable</label>
                         <div class="relative">
-                          <input 
+                          <input
                             id="responsable"
-                            type="text" 
+                            type="text"
                             formControlName="responsable"
-                            placeholder="Nombre del responsable" 
+                            placeholder="Nombre del responsable"
                             class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
                             [ngClass]="{'border-red-300 focus:border-red-500 focus:ring-red-200': formVentanilla.get('responsable')?.invalid && formVentanilla.get('responsable')?.touched}"
                           >
                         </div>
                       </div>
-                      
+
                       <div class="space-y-2">
                         <label for="fechaEntrega" class="block text-sm font-medium text-gray-700">Fecha Entrega a Responsable</label>
                         <div class="relative">
-                          <input 
-                            id="fechaEntrega"
-                            type="date" 
-                            formControlName="fechaEntrega"
-                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
-                            [ngClass]="{'border-red-300 focus:border-red-500 focus:ring-red-200': formVentanilla.get('fechaEntrega')?.invalid && formVentanilla.get('fechaEntrega')?.touched}"
-                          >
+                            <input type="text" mwlFlatpickr formControlName="date1" [options]="basic" class="form-input" />
                         </div>
                       </div>
-                      
+
                       <!-- Séptima fila -->
                       <div class="space-y-2">
                         <label for="fechaVencimiento" class="block text-sm font-medium text-gray-700">Fecha Vencimiento</label>
                         <div class="relative">
-                          <input 
-                            id="fechaVencimiento"
-                            type="date" 
-                            formControlName="fechaVencimiento"
-                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
-                            [ngClass]="{'border-red-300 focus:border-red-500 focus:ring-red-200': formVentanilla.get('fechaVencimiento')?.invalid && formVentanilla.get('fechaVencimiento')?.touched}"
-                          >
+                        <input type="text" mwlFlatpickr formControlName="date1" [options]="basic" class="form-input" />
                         </div>
                       </div>
-                      
+
                       <div class="space-y-2">
                         <label for="fechaSalida" class="block text-sm font-medium text-gray-700">Fecha Salida</label>
                         <div class="relative">
-                          <input 
-                            id="fechaSalida"
-                            type="date" 
-                            formControlName="fechaSalida"
-                            class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700"
-                          >
+                            <input type="text" mwlFlatpickr formControlName="date1" [options]="basic" class="form-input" />
                         </div>
                       </div>
-                      
+
                       <!-- Octava fila -->
                       <div class="space-y-2">
                         <label for="diasFaltantes" class="block text-sm font-medium text-gray-700">Días Faltantes</label>
                         <div class="relative">
-                          <input 
+                          <input
                             id="diasFaltantes"
-                            type="text" 
+                            type="text"
                             formControlName="diasFaltantes"
                             class="w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-gray-500 cursor-not-allowed"
                             readonly
                           >
                         </div>
                       </div>
-                      
+
                       <!-- Novena fila -->
                       <div class="space-y-2">
                         <label for="cumplimiento" class="block text-sm font-medium text-gray-700">Cumplimiento</label>
                         <div class="relative">
-                          <select 
+                          <select
                             id="cumplimiento"
                             formControlName="cumplimiento"
                             class="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none text-gray-700 appearance-none"
@@ -628,18 +605,18 @@
                         </div>
                       </div>
                     </div>
-                    
+
                     <!-- Botones -->
                     <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-2 justify-end">
-                      <button 
-                        type="button" 
-                        (click)="cancel()" 
+                      <button
+                        type="button"
+                        (click)="cancelAndclose()"
                         class="px-6 py-2.5 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200"
                       >
                         Cancelar
                       </button>
-                      <button 
-                        type="submit" 
+                      <button
+                        type="submit"
                         class="px-6 py-2.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
                       >
                         Guardar
@@ -648,8 +625,8 @@
                   </form>
                 </div>
               </div>
-              
-              
+
+
         </ng-template>
     </ngx-custom-modal>
 

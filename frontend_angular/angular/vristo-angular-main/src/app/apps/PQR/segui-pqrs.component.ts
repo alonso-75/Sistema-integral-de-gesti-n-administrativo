@@ -1,7 +1,9 @@
 // segui-pqrs.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormGroup,FormBuilder, FormGroupName, FormsModule } from '@angular/forms';
+import { IconModule } from "../../shared/icon/icon.module";
+import { FlatpickrDefaultsInterface } from 'angularx-flatpickr';
 // import { faSearch, faDownload, faTimes, faEllipsisV, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 interface Pqr {
@@ -17,11 +19,29 @@ interface Pqr {
 
 @Component({
   selector: 'app-segui-pqrs',
-  standalone: true,
-  imports: [CommonModule, FormsModule,],
+
   templateUrl: './segui-pqrs.component.html',
 })
 export class SeguiPqrsComponent implements OnInit {
+
+
+//date
+  basic:FlatpickrDefaultsInterface;
+  formpqr:FormGroup
+
+  today = new Date().toISOString().split("T")[0]
+      constructor(public fb: FormBuilder) {
+
+          this.formpqr= this.fb.group({
+              date1: ['2022-07-05'],
+          });
+
+          this.basic = {
+              dateFormat: 'Y-m-d',
+              //position: this.store.rtlClass === 'rtl' ? 'auto right' : 'auto left',
+              monthSelectorType: 'dropdown',
+          };
+      }
   // Iconos
   // faSearch = faSearch;
   // faDownload = faDownload;
@@ -42,6 +62,8 @@ export class SeguiPqrsComponent implements OnInit {
   currentPage = 1;
   itemsPerPage = 10;
   totalPages = 1;
+
+
 
   ngOnInit() {
     this.loadDummyData();
