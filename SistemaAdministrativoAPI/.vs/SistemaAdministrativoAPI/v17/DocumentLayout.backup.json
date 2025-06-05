@@ -1,12 +1,122 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|c:\\users\\a01tijma.americashg\\documents\\joel\\alonso proyecto\\sistema-integral-de-gesti-n-administrativo\\sistemaadministrativoapi\\sistemaadministrativoapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|solutionrelative:sistemaadministrativoapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|c:\\users\\a01tijma.americashg\\documents\\joel\\alonso proyecto\\sistema-integral-de-gesti-n-administrativo\\sistemaadministrativoapi\\sistemaadministrativoapi\\servicios\\gestion de pqrsd\\ipqrsdservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|solutionrelative:sistemaadministrativoapi\\servicios\\gestion de pqrsd\\ipqrsdservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|c:\\users\\a01tijma.americashg\\documents\\joel\\alonso proyecto\\sistema-integral-de-gesti-n-administrativo\\sistemaadministrativoapi\\sistemaadministrativoapi\\controllers\\gestion de psqrd\\pqrsdcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|solutionrelative:sistemaadministrativoapi\\controllers\\gestion de psqrd\\pqrsdcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|c:\\users\\a01tijma.americashg\\documents\\joel\\alonso proyecto\\sistema-integral-de-gesti-n-administrativo\\sistemaadministrativoapi\\sistemaadministrativoapi\\models\\gestion de pqrsd\\pqrsddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|solutionrelative:sistemaadministrativoapi\\models\\gestion de pqrsd\\pqrsddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|c:\\users\\a01tijma.americashg\\documents\\joel\\alonso proyecto\\sistema-integral-de-gesti-n-administrativo\\sistemaadministrativoapi\\sistemaadministrativoapi\\models\\archivos\\archivodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|solutionrelative:sistemaadministrativoapi\\models\\archivos\\archivodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|c:\\users\\a01tijma.americashg\\documents\\joel\\alonso proyecto\\sistema-integral-de-gesti-n-administrativo\\sistemaadministrativoapi\\sistemaadministrativoapi\\servicios\\gestion de pqrsd\\pqrsdservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ACB5323A-FDCD-4AB6-B258-6C28B36F2998}|SistemaAdministrativoAPI\\SistemaAdministrativoAPI.csproj|solutionrelative:sistemaadministrativoapi\\servicios\\gestion de pqrsd\\pqrsdservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Program.cs",
+              "RelativeDocumentMoniker": "SistemaAdministrativoAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Program.cs*",
+              "RelativeToolTip": "SistemaAdministrativoAPI\\Program.cs*",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAhwGwAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T20:16:32.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PqrsdController.cs",
+              "DocumentMoniker": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Controllers\\Gestion de psqrd\\PqrsdController.cs",
+              "RelativeDocumentMoniker": "SistemaAdministrativoAPI\\Controllers\\Gestion de psqrd\\PqrsdController.cs",
+              "ToolTip": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Controllers\\Gestion de psqrd\\PqrsdController.cs",
+              "RelativeToolTip": "SistemaAdministrativoAPI\\Controllers\\Gestion de psqrd\\PqrsdController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwCoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T19:59:33.624Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IPqrsdService.cs",
+              "DocumentMoniker": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Servicios\\Gestion de pqrsd\\IPqrsdService.cs",
+              "RelativeDocumentMoniker": "SistemaAdministrativoAPI\\Servicios\\Gestion de pqrsd\\IPqrsdService.cs",
+              "ToolTip": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Servicios\\Gestion de pqrsd\\IPqrsdService.cs",
+              "RelativeToolTip": "SistemaAdministrativoAPI\\Servicios\\Gestion de pqrsd\\IPqrsdService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T19:59:16.117Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PqrsdService.cs",
+              "DocumentMoniker": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Servicios\\Gestion de pqrsd\\PqrsdService.cs",
+              "RelativeDocumentMoniker": "SistemaAdministrativoAPI\\Servicios\\Gestion de pqrsd\\PqrsdService.cs",
+              "ToolTip": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Servicios\\Gestion de pqrsd\\PqrsdService.cs",
+              "RelativeToolTip": "SistemaAdministrativoAPI\\Servicios\\Gestion de pqrsd\\PqrsdService.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAowDAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T19:58:54.382Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PqrsdDto.cs",
+              "DocumentMoniker": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Models\\Gestion de Pqrsd\\PqrsdDto.cs",
+              "RelativeDocumentMoniker": "SistemaAdministrativoAPI\\Models\\Gestion de Pqrsd\\PqrsdDto.cs",
+              "ToolTip": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Models\\Gestion de Pqrsd\\PqrsdDto.cs",
+              "RelativeToolTip": "SistemaAdministrativoAPI\\Models\\Gestion de Pqrsd\\PqrsdDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T19:58:06.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ArchivoDto.cs",
+              "DocumentMoniker": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Models\\Archivos\\ArchivoDto.cs",
+              "RelativeDocumentMoniker": "SistemaAdministrativoAPI\\Models\\Archivos\\ArchivoDto.cs",
+              "ToolTip": "C:\\Users\\A01TIJMA.AMERICASHG\\Documents\\joel\\alonso proyecto\\Sistema-integral-de-gesti-n-administrativo\\SistemaAdministrativoAPI\\SistemaAdministrativoAPI\\Models\\Archivos\\ArchivoDto.cs",
+              "RelativeToolTip": "SistemaAdministrativoAPI\\Models\\Archivos\\ArchivoDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T19:57:33.299Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

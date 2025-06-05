@@ -135,6 +135,38 @@
     ]
   },
   {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.AutenticacionController",
+    "Method": "Login",
+    "RelativePath": "api/Autenticacion/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SistemaAdministrativoAPI.Models.Usuario.DTOS.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.AutenticacionController",
+    "Method": "Register",
+    "RelativePath": "api/Autenticacion/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SistemaAdministrativoAPI.Models.Usuario.DTOS.RegisterRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SistemaAdministrativoAPI.Controllers.Prestamo_de_Equipos.EquiposController",
     "Method": "GetAll",
     "RelativePath": "api/Equipos",
@@ -244,6 +276,252 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.Incidencias.IncidenciasController",
+    "Method": "GetIncidencias",
+    "RelativePath": "api/Incidencias",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[SistemaAdministrativoAPI.Models.Incidencias.Incidencia, SistemaAdministrativoAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.Incidencias.IncidenciasController",
+    "Method": "CreateIncidencia",
+    "RelativePath": "api/Incidencias",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "incidencia",
+        "Type": "SistemaAdministrativoAPI.Models.Incidencias.Incidencia",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaAdministrativoAPI.Models.Incidencias.Incidencia",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.Incidencias.IncidenciasController",
+    "Method": "GetIncidencia",
+    "RelativePath": "api/Incidencias/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SistemaAdministrativoAPI.Models.Incidencias.Incidencia",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.Incidencias.IncidenciasController",
+    "Method": "UpdateIncidencia",
+    "RelativePath": "api/Incidencias/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "incidencia",
+        "Type": "SistemaAdministrativoAPI.Models.Incidencias.Incidencia",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.Incidencias.IncidenciasController",
+    "Method": "DeleteIncidencia",
+    "RelativePath": "api/Incidencias/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.Permisos.PermisosController",
+    "Method": "ObtenerTodos",
+    "RelativePath": "api/Permisos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.Permisos.PermisosController",
+    "Method": "Crear",
+    "RelativePath": "api/Permisos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SistemaAdministrativoAPI.Models.Usuario.DTOS.CrearPermisoRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.Permisos.PermisosController",
+    "Method": "ObtenerPorId",
+    "RelativePath": "api/Permisos/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.Gestion_de_psqrd.PqrsdController",
+    "Method": "GetAll",
+    "RelativePath": "api/Pqrsd",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.Gestion_de_psqrd.PqrsdController",
+    "Method": "Create",
+    "RelativePath": "api/Pqrsd",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pqrsd",
+        "Type": "SistemaAdministrativoAPI.Models.Gestion_de_Pqrsd.Pqrsd",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.Gestion_de_psqrd.PqrsdController",
+    "Method": "GetById",
+    "RelativePath": "api/Pqrsd/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.Gestion_de_psqrd.PqrsdController",
+    "Method": "Update",
+    "RelativePath": "api/Pqrsd/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      },
+      {
+        "Name": "pqrsd",
+        "Type": "SistemaAdministrativoAPI.Models.Gestion_de_Pqrsd.Pqrsd",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.Gestion_de_psqrd.PqrsdController",
+    "Method": "Delete",
+    "RelativePath": "api/Pqrsd/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.Gestion_de_psqrd.PqrsdController",
+    "Method": "CrearConArchivos",
+    "RelativePath": "api/Pqrsd/completo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "SistemaAdministrativoAPI.Models.Gestion_de_Pqrsd.PqrsdDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SistemaAdministrativoAPI.Controllers.Prestamo_de_Equipos.PrestamoController",
     "Method": "GetAllPrestamos",
     "RelativePath": "api/Prestamo",
@@ -317,6 +595,48 @@
       {
         "Name": "id",
         "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.RolesController",
+    "Method": "ObtenerTodos",
+    "RelativePath": "api/Roles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.RolesController",
+    "Method": "CrearRol",
+    "RelativePath": "api/Roles",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SistemaAdministrativoAPI.Models.Usuario.DTOS.CrearRolRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SistemaAdministrativoAPI.Controllers.RolesController",
+    "Method": "ObtenerPorId",
+    "RelativePath": "api/Roles/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

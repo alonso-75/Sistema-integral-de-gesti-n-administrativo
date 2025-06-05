@@ -17,10 +17,37 @@ namespace SistemaAdministrativoAPI.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.3")
+                .HasAnnotation("ProductVersion", "9.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("SistemaAdministrativoAPI.Models.Archivos.Archivo", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Descripcion")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Link")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<long>("PqrsdId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PqrsdId");
+
+                    b.ToTable("Archivos");
+                });
 
             modelBuilder.Entity("SistemaAdministrativoAPI.Models.Atencion_Ciudadano.Atencion", b =>
                 {
@@ -140,6 +167,171 @@ namespace SistemaAdministrativoAPI.Migrations
                     b.ToTable("Ciudadanos");
                 });
 
+            modelBuilder.Entity("SistemaAdministrativoAPI.Models.Gestion_de_Pqrsd.Pqrsd", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Asunto")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Cumplimiento")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int?>("DiasFaltantes")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime?>("FechaEntregaResponsable")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaRecibido")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaSalida")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaVencimiento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Folios")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Observaciones")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Radicado")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Razon")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("RecibidoPor")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Remitente")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Responsable")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Rp")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Pqrsds");
+                });
+
+            modelBuilder.Entity("SistemaAdministrativoAPI.Models.Incidencias.Evidencia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("FechaSubida")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IncidenciaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NombreArchivo")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("RutaArchivo")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IncidenciaId");
+
+                    b.ToTable("Evidencias");
+                });
+
+            modelBuilder.Entity("SistemaAdministrativoAPI.Models.Incidencias.Incidencia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Departamento")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<DateTime>("FechaIncidencia")
+                        .HasColumnType("datetime2");
+
+                    b.Property<TimeSpan>("HoraIncidencia")
+                        .HasColumnType("time");
+
+                    b.Property<string>("NivelSeveridad")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.PrimitiveCollection<string>("PersonasInvolucradas")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.PrimitiveCollection<string>("Testigos")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TipoIncidencia")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Ubicacion")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Incidencias");
+                });
+
             modelBuilder.Entity("SistemaAdministrativoAPI.Models.Prestamos.Equipos", b =>
                 {
                     b.Property<long>("Id")
@@ -219,6 +411,110 @@ namespace SistemaAdministrativoAPI.Migrations
                         });
                 });
 
+            modelBuilder.Entity("SistemaAdministrativoAPI.Models.Usuario.Permiso", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Permisos");
+                });
+
+            modelBuilder.Entity("SistemaAdministrativoAPI.Models.Usuario.Rol", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("SistemaAdministrativoAPI.Models.Usuario.RolPermiso", b =>
+                {
+                    b.Property<long>("RolId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("PermisoId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("RolId", "PermisoId");
+
+                    b.HasIndex("PermisoId");
+
+                    b.ToTable("RolesPermisos");
+                });
+
+            modelBuilder.Entity("SistemaAdministrativoAPI.Models.Usuario.Usuario", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Cargo")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Clave")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<long>("RolId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("UsuarioNombre")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RolId");
+
+                    b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("SistemaAdministrativoAPI.Models.Archivos.Archivo", b =>
+                {
+                    b.HasOne("SistemaAdministrativoAPI.Models.Gestion_de_Pqrsd.Pqrsd", "Pqrsd")
+                        .WithMany("Archivos")
+                        .HasForeignKey("PqrsdId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pqrsd");
+                });
+
             modelBuilder.Entity("SistemaAdministrativoAPI.Models.Atencion_Ciudadano.Atencion", b =>
                 {
                     b.HasOne("SistemaAdministrativoAPI.Models.Atencion_Ciudadano.Ciudadano", null)
@@ -226,6 +522,17 @@ namespace SistemaAdministrativoAPI.Migrations
                         .HasForeignKey("CiudadanoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SistemaAdministrativoAPI.Models.Incidencias.Evidencia", b =>
+                {
+                    b.HasOne("SistemaAdministrativoAPI.Models.Incidencias.Incidencia", "Incidencia")
+                        .WithMany("Evidencias")
+                        .HasForeignKey("IncidenciaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Incidencia");
                 });
 
             modelBuilder.Entity("SistemaAdministrativoAPI.Models.Prestamos.Prestamos_equipos", b =>
@@ -239,9 +546,61 @@ namespace SistemaAdministrativoAPI.Migrations
                     b.Navigation("Equipo");
                 });
 
+            modelBuilder.Entity("SistemaAdministrativoAPI.Models.Usuario.RolPermiso", b =>
+                {
+                    b.HasOne("SistemaAdministrativoAPI.Models.Usuario.Permiso", "Permiso")
+                        .WithMany("RolesPermisos")
+                        .HasForeignKey("PermisoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SistemaAdministrativoAPI.Models.Usuario.Rol", "Rol")
+                        .WithMany("RolesPermisos")
+                        .HasForeignKey("RolId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Permiso");
+
+                    b.Navigation("Rol");
+                });
+
+            modelBuilder.Entity("SistemaAdministrativoAPI.Models.Usuario.Usuario", b =>
+                {
+                    b.HasOne("SistemaAdministrativoAPI.Models.Usuario.Rol", "Rol")
+                        .WithMany("Usuarios")
+                        .HasForeignKey("RolId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Rol");
+                });
+
             modelBuilder.Entity("SistemaAdministrativoAPI.Models.Atencion_Ciudadano.Ciudadano", b =>
                 {
                     b.Navigation("Atenciones");
+                });
+
+            modelBuilder.Entity("SistemaAdministrativoAPI.Models.Gestion_de_Pqrsd.Pqrsd", b =>
+                {
+                    b.Navigation("Archivos");
+                });
+
+            modelBuilder.Entity("SistemaAdministrativoAPI.Models.Incidencias.Incidencia", b =>
+                {
+                    b.Navigation("Evidencias");
+                });
+
+            modelBuilder.Entity("SistemaAdministrativoAPI.Models.Usuario.Permiso", b =>
+                {
+                    b.Navigation("RolesPermisos");
+                });
+
+            modelBuilder.Entity("SistemaAdministrativoAPI.Models.Usuario.Rol", b =>
+                {
+                    b.Navigation("RolesPermisos");
+
+                    b.Navigation("Usuarios");
                 });
 #pragma warning restore 612, 618
         }

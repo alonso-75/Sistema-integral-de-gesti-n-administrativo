@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FlatpickrDefaultsInterface } from 'angularx-flatpickr';
+import { Store } from '@ngrx/store';
 
 @Component({
     templateUrl: './formulario.html',
-    styleUrls: ["./formulario.css"],
+    styleUrls: ['./formulario.css'],
 })
 export class FormularioComponent {
     form: FormGroup;
+    basic: FlatpickrDefaultsInterface;
     currentStep = 0;
-    options = ['Orange', 'White', 'Purple'];
     input4: string | undefined;
 
     steps = [
@@ -17,8 +19,22 @@ export class FormularioComponent {
         { label: 'Motivo de Visita', controlName: 'motivovisita' },
         { label: 'Confirmación', controlName: 'confirmation' },
     ];
+    options = ['Cédula de Ciudadanía', 'Tarjeta de Identidad', 'Cédula de Extranjería', 'Pasaporte', 'Otro'];
+    input1 = 'Seleccione una obción';
+    genero = ['Masculino', 'Femenino', 'Otro'];
+    inputgenero = 'Seleccione un género';
+    Perteneciaetnica = ['Indígena', 'Afrocolombiano', 'Raizal', 'Palanquero', 'Rom', 'Otro'];
+    inputetnia = 'Seleccione una pertenencia étnica';
+    Tipodepoblacion = ['Víctima del conflicto armado', 'Desplazado', 'Reinsertado', 'Otro'];
+    inputpoblacion = 'Seleccione un tipo de población';
 
-    constructor(private fb: FormBuilder) {}
+    constructor(private fb: FormBuilder,public storeData: Store<any>) {
+            this.basic = {
+            dateFormat: 'Y-m-d',
+            // position: this.store.rtlClass === 'rtl' ? 'auto right' : 'auto left',
+            monthSelectorType: 'dropdown',
+        };
+    }
 
     ngOnInit() {
         this.form = this.fb.group({
@@ -35,7 +51,7 @@ export class FormularioComponent {
                 Fechadenacimiento: ['', Validators.required],
                 pertenenciaetnica: ['', Validators.required],
                 Tipodepoblacion: ['', Validators.required],
-                Correoelectronico: ['',[Validators.required,Validators.email]],
+                Correoelectronico: ['', [Validators.required, Validators.email]],
                 Telefonosdecontacto: ['', Validators.required],
                 Direccion: ['', Validators.required],
             }),
