@@ -28,8 +28,11 @@ export class FormularioComponent {
     Tipodepoblacion = ['Víctima del conflicto armado', 'Desplazado', 'Reinsertado', 'Otro'];
     inputpoblacion = 'Seleccione un tipo de población';
 
-    constructor(private fb: FormBuilder,public storeData: Store<any>) {
-            this.basic = {
+    constructor(
+        private fb: FormBuilder,
+        public storeData: Store<any>,
+    ) {
+        this.basic = {
             dateFormat: 'Y-m-d',
             // position: this.store.rtlClass === 'rtl' ? 'auto right' : 'auto left',
             monthSelectorType: 'dropdown',

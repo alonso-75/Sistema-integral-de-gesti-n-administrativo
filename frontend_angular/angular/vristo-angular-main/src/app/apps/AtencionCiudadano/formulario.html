@@ -1,351 +1,415 @@
-<div class="bg-gray-100 min-h-screen py-8 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-4xl mx-auto">
-        <div class="bg-white shadow-xl rounded-lg overflow-hidden">
-            <!-- Header -->
-            <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-6 sm:p-8">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-2xl font-bold text-white">Formulario de Registro</h2>
-                    <img src="/assets/images/logos/bandera-logo.png" alt="Logo" class="h-16" />
-                </div>
-            </div>
-
-            <!-- Stepper -->
-            <div class="bg-gray-50 px-6 py-4">
-                <div class="flex items-center justify-between">
-                    <ng-container *ngFor="let step of steps; let i = index; let last = last">
-                        <div class="flex items-center">
-                            <div
-                                [ngClass]="{
-                'bg-blue-500 text-white': currentStep >= i,
-                'bg-gray-300 text-gray-600': currentStep < i
-              }"
-                                class="rounded-full h-8 w-8 flex items-center justify-center font-semibold text-sm transition-colors duration-200"
-                            >
-                                {{ i + 1 }}
-                            </div>
-                            <span
-                                class="ml-2 text-sm font-medium hidden sm:inline"
-                                [ngClass]="{'text-blue-600': currentStep >= i, 'text-gray-500': currentStep < i}"
-                            >
-                                {{ step.label }}
-                            </span>
-                        </div>
-                        <div *ngIf="!last" class="flex-grow border-t border-gray-300 mx-2"></div>
-                    </ng-container>
-                </div>
-            </div>
-
-            <!-- Form -->
-            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-6 sm:p-8 space-y-6">
-                <ng-container [ngSwitch]="currentStep">
-                    <!-- Step 1: Documento -->
-                    <ng-container *ngSwitchCase="0">
-                        <div formGroupName="documento" class="space-y-6">
-                            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                                <div>
-                                    <label for="tipodocumento" class="block text-sm font-medium text-gray-700 mb-1">Tipo de documento</label>
-                                    <div class="mb-5">
-                                        <ng-select
-                                            [items]="options"
-                                            formControlName="tipodocumento"
-                                            [(ngModel)]="input1"
-                                            [searchable]="false"
-                                            [clearable]="false"
-                                            class="custom-multiselect"
-                                        >
-                                        </ng-select>
-                                    </div>
-                                    <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('documento.tipodocumento', 'required') }}</p>
-                                </div>
-                                <div>
-                                    <label for="numerodocumento" class="block text-sm font-medium text-gray-700 mb-1">Número de Documento</label>
-                                    <input
-                                        id="numerodocumento"
-                                        type="number"
-                                        formControlName="numerodocumento"
-                                        class="form-input block w-full"
-                                        placeholder="Ej: 1234567890"
-                                    />
-                                    <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('documento.numerodocumento', 'required') }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </ng-container>
-
-                    <!-- Step 2: Información Personal -->
-                    <ng-container *ngSwitchCase="1">
-                        <div formGroupName="informacionpersonal" class="space-y-6">
-                            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                                <div>
-                                    <label for="Primernombre" class="block text-sm font-medium text-gray-700 mb-1">Primer Nombre</label>
-                                    <input
-                                        id="Primernombre"
-                                        type="text"
-                                        formControlName="Primernombre"
-                                        class="form-input block w-full"
-                                        placeholder="Ej: Juan"
-                                    />
-                                    <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Primernombre', 'required') }}</p>
-                                </div>
-                                <div>
-                                    <label for="Segundonombre" class="block text-sm font-medium text-gray-700 mb-1">Segundo Nombre</label>
-                                    <input
-                                        id="Segundonombre"
-                                        type="text"
-                                        formControlName="Segundonombre"
-                                        class="form-input block w-full"
-                                        placeholder="Ej: Carlos"
-                                    />
-                                </div>
-                                <div>
-                                    <label for="Primerapellido" class="block text-sm font-medium text-gray-700 mb-1">Primer Apellido</label>
-                                    <input
-                                        id="Primerapellido"
-                                        type="text"
-                                        formControlName="Primerapellido"
-                                        class="form-input block w-full"
-                                        placeholder="Ej: Gómez"
-                                    />
-                                    <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Primerapellido', 'required') }}</p>
-                                </div>
-                                <div>
-                                    <label for="Segundoapellido" class="block text-sm font-medium text-gray-700 mb-1">Segundo Apellido</label>
-                                    <input
-                                        id="Segundoapellido"
-                                        type="text"
-                                        formControlName="Segundoapellido"
-                                        class="form-input block w-full"
-                                        placeholder="Ej: Pérez"
-                                    />
-                                    <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Segundoapellido', 'required') }}</p>
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
-                                <div>
-                                    <label for="Genero" class="block text-sm font-medium text-gray-700 mb-1">Género</label>
-                                    <ng-select
-                                        [items]="genero"
-                                        formControlName="Genero"
-                                        [(ngModel)]="inputgenero"
-                                        [searchable]="false"
-                                        [clearable]="false"
-                                        class="custom-multiselect"
-                                    >
-                                    </ng-select>
-
-                                    <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Genero', 'required') }}</p>
-                                </div>
-                                <div>
-                                    <label for="Fechadenacimiento" class="block text-sm font-medium text-gray-700 mb-1">Fecha de Nacimiento</label>
-                                    <input type="text" mwlFlatpickr formControlName="Fechadenacimiento" [options]="basic" class="form-input" />
-                                    <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Fechadenacimiento', 'required') }}</p>
-                                </div>
-                                <div>
-                                    <label for="pertenenciaetnica" class="block text-sm font-medium text-gray-700 mb-1">Pertenencia Étnica</label>
-                                    <ng-select
-                                        [items]="Perteneciaetnica"
-                                        formControlName="pertenenciaetnica"
-                                        [(ngModel)]="inputetnia"
-                                        [searchable]="false"
-                                        [clearable]="false"
-                                        class="custom-multiselect"
-                                    >
-                                    </ng-select>
-
-                                    <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.pertenenciaetnica', 'required') }}</p>
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                                <div>
-                                    <label for="Tipodepoblacion" class="block text-sm font-medium text-gray-700 mb-1">Tipo de Población</label>
-                                    <ng-select
-                                        [items]="Tipodepoblacion"
-                                        formControlName="Tipodepoblacion"
-                                        [(ngModel)]="inputpoblacion"
-                                        [searchable]="false"
-                                        [clearable]="false"
-                                        class="custom-multiselect"
-                                    >
-                                    </ng-select>
-                                    <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Tipodepoblacion', 'required') }}</p>
-                                </div>
-                                <div>
-                                    <label for="Correoelectronico" class="block text-sm font-medium text-gray-700 mb-1">Correo Electrónico</label>
-                                    <input
-                                        id="Correoelectronico"
-                                        type="email"
-                                        formControlName="Correoelectronico"
-                                        class="form-input block w-full"
-                                        placeholder="ejemplo@correo.com"
-                                    />
-                                    <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Correoelectronico', 'required') }}</p>
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                                <div>
-                                    <label for="Telefonosdecontacto" class="block text-sm font-medium text-gray-700 mb-1">Teléfono de Contacto</label>
-                                    <input
-                                        id="Telefonosdecontacto"
-                                        type="tel"
-                                        formControlName="Telefonosdecontacto"
-                                        class="form-input block w-full"
-                                        placeholder="Ej: 3001234567"
-                                    />
-                                    <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Telefonosdecontacto', 'required') }}</p>
-                                </div>
-                                <div>
-                                    <label for="Direccion" class="block text-sm font-medium text-gray-700 mb-1">Dirección</label>
-                                    <input
-                                        id="Direccion"
-                                        type="text"
-                                        formControlName="Direccion"
-                                        class="form-input block w-full"
-                                        placeholder="Ej: Calle 123 # 45-67"
-                                    />
-                                    <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Direccion', 'required') }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </ng-container>
-
-                    <!-- Step 3: Motivo de Visita -->
-                    <ng-container *ngSwitchCase="2">
-                        <div formGroupName="motivovisita" class="space-y-6">
-                            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                                <div>
-                                    <label for="Tipodeatencion" class="block text-sm font-medium text-gray-700 mb-1">Tipo de Atención</label>
-                                    <select id="Tipodeatencion" formControlName="Tipodeatencion" class="form-select block w-full">
-                                        <option value="">Seleccione un tipo</option>
-                                        <option value="consulta">Consulta</option>
-                                        <option value="tramite">Trámite</option>
-                                        <option value="reclamo">Reclamo</option>
-                                        <option value="otro">Otro</option>
-                                    </select>
-                                    <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('motivovisita.Tipodeatencion', 'required') }}</p>
-                                </div>
-                                <div>
-                                    <label for="Fechadelaatencion" class="block text-sm font-medium text-gray-700 mb-1">Fecha de la Atención</label>
-                                    <input id="Fechadelaatencion" type="date" formControlName="Fechadelaatencion" class="form-input block w-full" />
-                                    <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('motivovisita.Fechadelaatencion', 'required') }}</p>
-                                </div>
-                            </div>
-
-                            <div>
-                                <label for="Asunto" class="block text-sm font-medium text-gray-700 mb-1">Asunto</label>
-                                <input
-                                    id="Asunto"
-                                    type="text"
-                                    formControlName="Asunto"
-                                    class="form-input block w-full"
-                                    placeholder="Breve descripción del asunto"
-                                />
-                                <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('motivovisita.Asunto', 'required') }}</p>
-                            </div>
-
-                            <div>
-                                <label for="Descripcion" class="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
-                                <textarea
-                                    id="Descripcion"
-                                    formControlName="Descripcion"
-                                    class="form-textarea block w-full"
-                                    rows="4"
-                                    placeholder="Detalle su solicitud aquí"
-                                ></textarea>
-                                <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('motivovisita.Descripcion', 'required') }}</p>
-                            </div>
-
-                            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                                <div>
-                                    <label for="Atendidopor" class="block text-sm font-medium text-gray-700 mb-1">Atendido por</label>
-                                    <input
-                                        id="Atendidopor"
-                                        type="text"
-                                        formControlName="Atendidopor"
-                                        class="form-input block w-full"
-                                        placeholder="Nombre del funcionario"
-                                    />
-                                    <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('motivovisita.Atendidopor', 'required') }}</p>
-                                </div>
-                                <div>
-                                    <label for="DependenciaoSecretaríaqueatiende" class="block text-sm font-medium text-gray-700 mb-1"
-                                        >Dependencia o Secretaría</label
-                                    >
-                                    <select
-                                        id="DependenciaoSecretaríaqueatiende"
-                                        formControlName="DependenciaoSecretaríaqueatiende"
-                                        class="form-select block w-full"
-                                    >
-                                        <option value="">Seleccione una dependencia</option>
-                                        <option value="secretaria1">Secretaría 1</option>
-                                        <option value="secretaria2">Secretaría 2</option>
-                                        <option value="secretaria3">Secretaría 3</option>
-                                    </select>
-                                    <p class="mt-1 text-sm text-red-600">
-                                        {{ getFormErrorMessage('motivovisita.DependenciaoSecretaríaqueatiende', 'required') }}
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div>
-                                <label for="Oficinaoprogramaqueatiende" class="block text-sm font-medium text-gray-700 mb-1"
-                                    >Oficina o programa que atiende</label
-                                >
-                                <select id="Oficinaoprogramaqueatiende" formControlName="Oficinaoprogramaqueatiende" class="form-select block w-full">
-                                    <option value="">Seleccione una oficina o programa</option>
-                                    <option value="oficina1">Oficina 1</option>
-                                    <option value="oficina2">Oficina 2</option>
-                                    <option value="programa1">Programa 1</option>
-                                    <option value="programa2">Programa 2</option>
-                                </select>
-                                <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('motivovisita.Oficinaoprogramaqueatiende', 'required') }}</p>
-                            </div>
-                        </div>
-                    </ng-container>
-
-                    <!-- Step 4: Confirmación -->
-                    <ng-container *ngSwitchCase="3">
-                        <div formGroupName="confirmation" class="space-y-6">
-                            <div class="flex items-center">
-                                <input id="termsAccepted" type="checkbox" formControlName="termsAccepted" class="form-checkbox h-5 w-5 text-blue-600" />
-                                <label for="termsAccepted" class="ml-2 block text-sm text-gray-900"> Acepto los términos y condiciones </label>
-                            </div>
-                            <p class="mt-1 text-sm text-red-600">{{ getFormErrorMessage('confirmation.termsAccepted', 'required') }}</p>
-                        </div>
-                    </ng-container>
-                </ng-container>
-
-                <!-- Navigation Buttons -->
-                <div class="flex justify-between mt-8">
-                    <button
-                        *ngIf="currentStep > 0"
-                        type="button"
-                        (click)="onPrevious()"
-                        class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-colors duration-200"
-                    >
-                        Anterior
-                    </button>
-                    <button
-                        *ngIf="currentStep < steps.length - 1"
-                        type="button"
-                        (click)="onNext()"
-                        class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors duration-200"
-                        [disabled]="!isStepValid(currentStep)"
-                    >
-                        Siguiente
-                    </button>
-                    <button
-                        *ngIf="currentStep === steps.length - 1"
-                        type="submit"
-                        class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-200"
-                        [disabled]="!form.valid"
-                    >
-                        Enviar
-                    </button>
-                </div>
-            </form>
+<div class="bg-gradient-to-br from-blue-50 to-indigo-100 py-10 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto">
+    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+      <!-- Header -->
+      <div class="bg-gradient-to-r from-blue-600 to-indigo-700 p-6 sm:p-8">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+          <h2 class="text-2xl sm:text-3xl font-bold text-white">Formulario de Registro</h2>
+          <img src="/assets/images/logos/bandera-logo.png" alt="Logo" class="h-16" />
         </div>
+      </div>
+
+      <!-- Stepper -->
+      <div class="bg-white border-b px-6 py-4">
+        <div class="flex items-center justify-between">
+          <ng-container *ngFor="let step of steps; let i = index; let last = last">
+            <div class="flex items-center">
+              <div
+                [ngClass]="{
+                  'bg-blue-600 text-white': currentStep >= i,
+                  'bg-gray-200 text-gray-600': currentStep < i
+                }"
+                class="rounded-full h-8 w-8 flex items-center justify-center font-semibold text-sm transition-all duration-300 shadow-sm"
+              >
+                {{ i + 1 }}
+              </div>
+              <span
+                class="ml-2 text-sm font-medium hidden sm:inline"
+                [ngClass]="{'text-blue-700 font-semibold': currentStep >= i, 'text-gray-500': currentStep < i}"
+              >
+                {{ step.label }}
+              </span>
+            </div>
+            <div *ngIf="!last" class="flex-grow border-t border-gray-200 mx-2"></div>
+          </ng-container>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-6 sm:p-10">
+        <ng-container [ngSwitch]="currentStep">
+          <!-- Step 1: Documento -->
+          <ng-container *ngSwitchCase="0">
+            <div formGroupName="documento" class="space-y-6">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4">Información del Documento</h3>
+              <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <div class="space-y-2">
+                  <label for="tipodocumento" class="block text-sm font-medium text-gray-700">Tipo de documento</label>
+                  <div class="relative">
+                    <ng-select
+                      [items]="options"
+                      formControlName="tipodocumento"
+                      [(ngModel)]="input1"
+                      [searchable]="false"
+                      [clearable]="false"
+                      bindLabel="name"
+                      bindValue="id"
+                      class="custom-multiselect"
+                      class="custom-multiselect select-documento"
+                      placeholder="Seleccione tipo de documento"
+                    >
+                    </ng-select>
+                  </div>
+                  <p class="text-sm text-red-600">{{ getFormErrorMessage('documento.tipodocumento', 'required') }}</p>
+                </div>
+                <div class="space-y-2">
+                  <label for="numerodocumento" class="block text-sm font-medium text-gray-700">Número de Documento</label>
+                  <input
+                    id="numerodocumento"
+                    type="number"
+                    formControlName="numerodocumento"
+                    class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all"
+                    placeholder="Ej: 1234567890"
+                  />
+                  <p class="text-sm text-red-600">{{ getFormErrorMessage('documento.numerodocumento', 'required') }}</p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+
+          <!-- Step 2: Información Personal -->
+          <ng-container *ngSwitchCase="1">
+            <div formGroupName="informacionpersonal" class="space-y-6">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4">Información Personal</h3>
+              <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <div class="space-y-2">
+                  <label for="Primernombre" class="block text-sm font-medium text-gray-700">Primer Nombre</label>
+                  <input
+                    id="Primernombre"
+                    type="text"
+                    formControlName="Primernombre"
+                    class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all"
+                    placeholder="Ej: Juan"
+                  />
+                  <p class="text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Primernombre', 'required') }}</p>
+                </div>
+                <div class="space-y-2">
+                  <label for="Segundonombre" class="block text-sm font-medium text-gray-700">Segundo Nombre</label>
+                  <input
+                    id="Segundonombre"
+                    type="text"
+                    formControlName="Segundonombre"
+                    class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all"
+                    placeholder="Ej: Carlos"
+                  />
+                </div>
+                <div class="space-y-2">
+                  <label for="Primerapellido" class="block text-sm font-medium text-gray-700">Primer Apellido</label>
+                  <input
+                    id="Primerapellido"
+                    type="text"
+                    formControlName="Primerapellido"
+                    class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all"
+                    placeholder="Ej: Gómez"
+                  />
+                  <p class="text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Primerapellido', 'required') }}</p>
+                </div>
+                <div class="space-y-2">
+                  <label for="Segundoapellido" class="block text-sm font-medium text-gray-700">Segundo Apellido</label>
+                  <input
+                    id="Segundoapellido"
+                    type="text"
+                    formControlName="Segundoapellido"
+                    class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all"
+                    placeholder="Ej: Pérez"
+                  />
+                  <p class="text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Segundoapellido', 'required') }}</p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
+                <div class="space-y-2">
+                  <label for="Genero" class="block text-sm font-medium text-gray-700">Género</label>
+                  <ng-select
+                    [items]="genero"
+                    formControlName="Genero"
+                    [(ngModel)]="inputgenero"
+                    [searchable]="false"
+                    [clearable]="false"
+                    bindLabel="name"
+                    bindValue="id"
+                    class="custom-multiselect"
+                    placeholder="Seleccione género"
+                  >
+                  </ng-select>
+                  <p class="text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Genero', 'required') }}</p>
+                </div>
+                <div class="space-y-2">
+                  <label for="Fechadenacimiento" class="block text-sm font-medium text-gray-700">Fecha de Nacimiento</label>
+                  <input 
+                    type="text" 
+                    mwlFlatpickr 
+                    formControlName="Fechadenacimiento" 
+                    [options]="basic" 
+                    class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all" 
+                  />
+                  <p class="text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Fechadenacimiento', 'required') }}</p>
+                </div>
+                <div class="space-y-2">
+                  <label for="pertenenciaetnica" class="block text-sm font-medium text-gray-700">Pertenencia Étnica</label>
+                  <ng-select
+                    [items]="Perteneciaetnica"
+                    formControlName="pertenenciaetnica"
+                    [(ngModel)]="inputetnia"
+                    [searchable]="false"
+                    [clearable]="false"
+                    bindLabel="name"
+                    bindValue="id"
+                    class="custom-multiselect"
+                    placeholder="Seleccione pertenencia étnica"
+                  >
+                  </ng-select>
+                  <p class="text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.pertenenciaetnica', 'required') }}</p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <div class="space-y-2">
+                  <label for="Tipodepoblacion" class="block text-sm font-medium text-gray-700">Tipo de Población</label>
+                  <ng-select
+                    [items]="Tipodepoblacion"
+                    formControlName="Tipodepoblacion"
+                    [(ngModel)]="inputpoblacion"
+                    [searchable]="false"
+                    [clearable]="false"
+                    bindLabel="name"
+                    bindValue="id"
+                    class="custom-multiselect"
+                    placeholder="Seleccione tipo de población"
+                  >
+                  </ng-select>
+                  <p class="text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Tipodepoblacion', 'required') }}</p>
+                </div>
+                <div class="space-y-2">
+                  <label for="Correoelectronico" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                  <input
+                    id="Correoelectronico"
+                    type="email"
+                    formControlName="Correoelectronico"
+                    class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all"
+                    placeholder="ejemplo@correo.com"
+                  />
+                  <p class="text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Correoelectronico', 'required') }}</p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <div class="space-y-2">
+                  <label for="Telefonosdecontacto" class="block text-sm font-medium text-gray-700">Teléfono de Contacto</label>
+                  <input
+                    id="Telefonosdecontacto"
+                    type="tel"
+                    formControlName="Telefonosdecontacto"
+                    class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all"
+                    placeholder="Ej: 3001234567"
+                  />
+                  <p class="text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Telefonosdecontacto', 'required') }}</p>
+                </div>
+                <div class="space-y-2">
+                  <label for="Direccion" class="block text-sm font-medium text-gray-700">Dirección</label>
+                  <input
+                    id="Direccion"
+                    type="text"
+                    formControlName="Direccion"
+                    class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all"
+                    placeholder="Ej: Calle 123 # 45-67"
+                  />
+                  <p class="text-sm text-red-600">{{ getFormErrorMessage('informacionpersonal.Direccion', 'required') }}</p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+
+          <!-- Step 3: Motivo de Visita -->
+          <ng-container *ngSwitchCase="2">
+            <div formGroupName="motivovisita" class="space-y-6">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4">Motivo de Visita</h3>
+              <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <div class="space-y-2">
+                  <label for="Tipodeatencion" class="block text-sm font-medium text-gray-700">Tipo de Atención</label>
+                  <select 
+                    id="Tipodeatencion" 
+                    formControlName="Tipodeatencion" 
+                    class="form-select block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all"
+                  >
+                    <option value="">Seleccione un tipo</option>
+                    <option value="consulta">Consulta</option>
+                    <option value="tramite">Trámite</option>
+                    <option value="reclamo">Reclamo</option>
+                    <option value="otro">Otro</option>
+                  </select>
+                  <p class="text-sm text-red-600">{{ getFormErrorMessage('motivovisita.Tipodeatencion', 'required') }}</p>
+                </div>
+                <div class="space-y-2">
+                  <label for="Fechadelaatencion" class="block text-sm font-medium text-gray-700">Fecha de la Atención</label>
+                  <input 
+                    id="Fechadelaatencion" 
+                    type="date" 
+                    formControlName="Fechadelaatencion" 
+                    class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all" 
+                  />
+                  <p class="text-sm text-red-600">{{ getFormErrorMessage('motivovisita.Fechadelaatencion', 'required') }}</p>
+                </div>
+              </div>
+
+              <div class="space-y-2">
+                <label for="Asunto" class="block text-sm font-medium text-gray-700">Asunto</label>
+                <input
+                  id="Asunto"
+                  type="text"
+                  formControlName="Asunto"
+                  class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all"
+                  placeholder="Breve descripción del asunto"
+                />
+                <p class="text-sm text-red-600">{{ getFormErrorMessage('motivovisita.Asunto', 'required') }}</p>
+              </div>
+
+              <div class="space-y-2">
+                <label for="Descripcion" class="block text-sm font-medium text-gray-700">Descripción</label>
+                <textarea
+                  id="Descripcion"
+                  formControlName="Descripcion"
+                  class="form-textarea block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all"
+                  rows="4"
+                  placeholder="Detalle su solicitud aquí"
+                ></textarea>
+                <p class="text-sm text-red-600">{{ getFormErrorMessage('motivovisita.Descripcion', 'required') }}</p>
+              </div>
+
+              <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <div class="space-y-2">
+                  <label for="Atendidopor" class="block text-sm font-medium text-gray-700">Atendido por</label>
+                  <input
+                    id="Atendidopor"
+                    type="text"
+                    formControlName="Atendidopor"
+                    class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all"
+                    placeholder="Nombre del funcionario"
+                  />
+                  <p class="text-sm text-red-600">{{ getFormErrorMessage('motivovisita.Atendidopor', 'required') }}</p>
+                </div>
+                <div class="space-y-2">
+                  <label for="DependenciaoSecretaríaqueatiende" class="block text-sm font-medium text-gray-700">Dependencia o Secretaría</label>
+                  <select
+                    id="DependenciaoSecretaríaqueatiende"
+                    formControlName="DependenciaoSecretaríaqueatiende"
+                    class="form-select block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all"
+                  >
+                    <option value="">Seleccione una dependencia</option>
+                    <option value="secretaria1">Secretaría 1</option>
+                    <option value="secretaria2">Secretaría 2</option>
+                    <option value="secretaria3">Secretaría 3</option>
+                  </select>
+                  <p class="text-sm text-red-600">
+                    {{ getFormErrorMessage('motivovisita.DependenciaoSecretaríaqueatiende', 'required') }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="space-y-2">
+                <label for="Oficinaoprogramaqueatiende" class="block text-sm font-medium text-gray-700">Oficina o programa que atiende</label>
+                <select 
+                  id="Oficinaoprogramaqueatiende" 
+                  formControlName="Oficinaoprogramaqueatiende" 
+                  class="form-select block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all"
+                >
+                  <option value="">Seleccione una oficina o programa</option>
+                  <option value="oficina1">Oficina 1</option>
+                  <option value="oficina2">Oficina 2</option>
+                  <option value="programa1">Programa 1</option>
+                  <option value="programa2">Programa 2</option>
+                </select>
+                <p class="text-sm text-red-600">{{ getFormErrorMessage('motivovisita.Oficinaoprogramaqueatiende', 'required') }}</p>
+              </div>
+            </div>
+          </ng-container>
+
+          <!-- Step 4: Confirmación -->
+          <ng-container *ngSwitchCase="3">
+            <div formGroupName="confirmation" class="space-y-6">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4">Confirmación</h3>
+              <div class="p-6 bg-blue-50 rounded-xl border border-blue-100">
+                <h4 class="text-lg font-medium text-blue-800 mb-4">Resumen de la Solicitud</h4>
+                <p class="text-sm text-gray-600 mb-4">Por favor revise la información antes de enviar el formulario.</p>
+                
+                <div class="space-y-4">
+                  <div class="flex items-center justify-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="flex items-center p-4 bg-gray-50 rounded-lg">
+                <input 
+                  id="termsAccepted" 
+                  type="checkbox" 
+                  formControlName="termsAccepted" 
+                  class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500" 
+                />
+                <label for="termsAccepted" class="ml-2 block text-sm text-gray-700">
+                  Acepto los <a href="#" class="text-blue-600 hover:underline">términos y condiciones</a>
+                </label>
+              </div>
+              <p class="text-sm text-red-600">{{ getFormErrorMessage('confirmation.termsAccepted', 'required') }}</p>
+            </div>
+          </ng-container>
+        </ng-container>
+
+        <!-- Navigation Buttons -->
+        <div class="flex flex-col sm:flex-row justify-between gap-4 mt-8">
+          <button
+            *ngIf="currentStep > 0"
+            type="button"
+            (click)="onPrevious()"
+            class="px-6 py-2.5 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 transition-all duration-200 flex items-center justify-center"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+            </svg>
+            Anterior
+          </button>
+          <div class="flex-grow"></div>
+          <button
+            *ngIf="currentStep < steps.length - 1"
+            type="button"
+            (click)="onNext()"
+            class="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-200 flex items-center justify-center"
+            [disabled]="!isStepValid(currentStep)"
+            [ngClass]="{'opacity-50 cursor-not-allowed': !isStepValid(currentStep)}"
+          >
+            Siguiente
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <button
+            *ngIf="currentStep === steps.length - 1"
+            type="submit"
+            class="px-6 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-all duration-200 flex items-center justify-center"
+            [disabled]="!form.valid"
+            [ngClass]="{'opacity-50 cursor-not-allowed': !form.valid}"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            Enviar
+          </button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
